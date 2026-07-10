@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+/* ============================================= */
+/* BOXI STORE - VARIABLES DE MARCA              */
+/* ============================================= */
+
+:root {
+  /* Colores de marca */
+  --boxi-orange: #FF6B00;
+  --boxi-orange-dark: #CC5500;
+  --boxi-orange-light: #FFB380;
+  --boxi-black: #1A1A1A;
+  --boxi-dark-gray: #2D2D2D;
+  --boxi-gray: #666666;
+  --boxi-light-gray: #F5F5F5;
+  --boxi-white: #FFFFFF;
+  
+  /* Background y foreground */
+  --background: var(--boxi-white);
+  --foreground: var(--boxi-black);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  
+  /* Colores de marca para Tailwind */
+  --color-boxi-orange: var(--boxi-orange);
+  --color-boxi-orange-dark: var(--boxi-orange-dark);
+  --color-boxi-orange-light: var(--boxi-orange-light);
+  --color-boxi-black: var(--boxi-black);
+  --color-boxi-dark-gray: var(--boxi-dark-gray);
+  --color-boxi-gray: var(--boxi-gray);
+  --color-boxi-light-gray: var(--boxi-light-gray);
+  --color-boxi-white: var(--boxi-white);
+  
+  /* Fuentes */
+  --font-sans: var(--font-poppins), system-ui, sans-serif;
+  --font-inter: var(--font-inter), system-ui, sans-serif;
+}
+
+/* ============================================= */
+/* ESTILOS GLOBALES                              */
+/* ============================================= */
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+/* Scrollbar personalizado */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--boxi-light-gray);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--boxi-orange);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--boxi-orange-dark);
+}
+
+/* Selección de texto */
+::selection {
+  background: var(--boxi-orange);
+  color: white;
+}
+
+/* Focus outline personalizado */
+*:focus-visible {
+  outline: 2px solid var(--boxi-orange);
+  outline-offset: 2px;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Line clamp para texto */
+.line-clamp-1 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.line-clamp-3 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}

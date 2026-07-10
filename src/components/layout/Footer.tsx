@@ -88,7 +88,7 @@ export default function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center md:text-left">
             <div className="flex items-center justify-center md:justify-start space-x-2 text-gray-400">
               <Mail className="w-5 h-5" />
-              <span>contacto@boxi.com</span>
+              <span>boxitec.tech@gmail.com</span>
             </div>
             <div className="flex items-center justify-center md:justify-start space-x-2 text-gray-400">
               <Phone className="w-5 h-5" />

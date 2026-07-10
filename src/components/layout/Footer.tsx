@@ -8,11 +8,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Logo y descripción */}
           <div className="col-span-1 md:col-span-2">
-            <Link href="/" className="flex items-center space-x-2 mb-4">
-              <div className="w-10 h-10 bg-[#FF6B00] rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">B</span>
-              </div>
-              <span className="text-xl font-bold">boxi</span>
+            <Link href="/" className="mb-4">
+              <img src="/logo_boxi.jpg" alt="BOXI" className="h-16 w-auto" />
             </Link>
             <p className="text-gray-400 mb-4 max-w-md">
               Donde la tecnología cobra vida. Encuentra los mejores gadgets, 

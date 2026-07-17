@@ -71,16 +71,32 @@ export default function NuevoProductoPage() {
     const urlLocal = URL.createObjectURL(archivo);
     setPreviewUrl(urlLocal);
 
-    // Subir a Supabase Storage
+    // Subir via API
     setSubiendoImagen(true);
-    const urlPublica = await subirImagenProducto(archivo, 'temp-' + Date.now(), 0);
-    setSubiendoImagen(false);
+    try {
+      const formData = new FormData();
+      formData.append('file', archivo);
+      formData.append('productoId', 'temp-' + Date.now());
+      formData.append('index', '0');
 
-    if (urlPublica) {
-      setFormulario(prev => ({ ...prev, imagen_url: urlPublica }));
-    } else {
-      alert('Error al subir la imagen');
+      const response = await fetch('/api/upload', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const result = await response.json();
+      setSubiendoImagen(false);
+
+      if (!response.ok) {
+        alert('Error al subir: ' + (result.error || 'Error desconocido'));
+        setPreviewUrl(null);
+      } else {
+        setFormulario(prev => ({ ...prev, imagen_url: result.url }));
+      }
+    } catch (err: any) {
+      alert('Error: ' + err.message);
       setPreviewUrl(null);
+      setSubiendoImagen(false);
     }
   };
 

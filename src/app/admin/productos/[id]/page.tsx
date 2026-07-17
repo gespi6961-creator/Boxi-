@@ -115,20 +115,23 @@ function EditarForm({ id, router }: { id: string; router: any }) {
 
     setSubiendoImagen(true);
     try {
-      const extension = archivo.name.split('.').pop() || 'jpg';
-      const ruta = `${id}/imagen_0.${extension}`;
-      
-      const { error: uploadError } = await supabase.storage
-        .from('productos')
-        .upload(ruta, archivo, { cacheControl: '3600', upsert: true });
+      const formData = new FormData();
+      formData.append('file', archivo);
+      formData.append('productoId', id);
+      formData.append('index', '0');
 
-      if (uploadError) {
-        console.error('Upload error:', uploadError);
-        alert('Error al subir: ' + uploadError.message);
+      const response = await fetch('/api/upload', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        alert('Error al subir: ' + (result.error || 'Error desconocido'));
         setPreviewUrl(formulario.imagen_url || null);
       } else {
-        const { data } = supabase.storage.from('productos').getPublicUrl(ruta);
-        setFormulario(prev => ({ ...prev, imagen_url: data.publicUrl }));
+        setFormulario(prev => ({ ...prev, imagen_url: result.url }));
       }
     } catch (err: any) {
       alert('Error: ' + err.message);

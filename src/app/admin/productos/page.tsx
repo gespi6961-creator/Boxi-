@@ -99,8 +99,12 @@ export default function AdminProductosPage() {
                   <tr key={producto.id} className="hover:bg-gray-50">
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center">
-                          <span className="text-xl">📦</span>
+                        <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center overflow-hidden">
+                          {producto.imagen_url ? (
+                            <img src={producto.imagen_url} alt="" className="w-full h-full object-cover" />
+                          ) : (
+                            <span className="text-xl">📦</span>
+                          )}
                         </div>
                         <div>
                           <p className="font-medium text-[#1A1A1A]">{producto.nombre}</p>
@@ -133,7 +137,7 @@ export default function AdminProductosPage() {
                           <Eye className="w-4 h-4" />
                         </Link>
                         <Link
-                          href={`/admin/productos/${producto.id}/editar`}
+                          href={`/admin/productos/${producto.id}`}
                           className="p-2 text-gray-400 hover:text-[#FF6B00] hover:bg-orange-50 rounded-lg"
                         >
                           <Edit className="w-4 h-4" />

@@ -1,25 +1,27 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, use } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { ArrowLeft, Save, Upload, X, Image as ImageIcon } from 'lucide-react';
+import { ArrowLeft, Save, Upload, X, Trash2 } from 'lucide-react';
 import { createClient } from '@supabase/supabase-js';
 import Button from '@/components/ui/Button';
 import Input from '@/components/ui/Input';
-import { subirImagenProducto } from '@/lib/storage';
+import { subirImagenProducto, eliminarImagenProducto } from '@/lib/storage';
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 );
 
-export default function NuevoProductoPage() {
+export default function EditarProductoPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = use(params);
   const router = useRouter();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [categorias, setCategorias] = useState<any[]>([]);
   const [guardando, setGuardando] = useState(false);
   const [subiendoImagen, setSubiendoImagen] = useState(false);
+  const [cargando, setCargando] = useState(true);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [formulario, setFormulario] = useState({
     nombre: '',
@@ -35,12 +37,37 @@ export default function NuevoProductoPage() {
   });
 
   useEffect(() => {
-    async function cargarCategorias() {
-      const { data } = await supabase.from('categorias').select('*').order('orden');
-      setCategorias(data || []);
+    async function cargarDatos() {
+      const [categoriasRes, productoRes] = await Promise.all([
+        supabase.from('categorias').select('*').order('orden'),
+        supabase.from('productos').select('*').eq('id', id).single(),
+      ]);
+
+      if (categoriasRes.data) setCategorias(categoriasRes.data);
+      
+      if (productoRes.data) {
+        const prod = productoRes.data;
+        setFormulario({
+          nombre: prod.nombre || '',
+          slug: prod.slug || '',
+          descripcion_corta: prod.descripcion_corta || '',
+          descripcion: prod.descripcion || '',
+          precio_base: prod.precio_base?.toString() || '',
+          precio_oferta: prod.precio_oferta?.toString() || '',
+          categoria_id: prod.categoria_id || '',
+          imagen_url: prod.imagen_url || '',
+          destacado: prod.destacado || false,
+          activo: prod.activo ?? true,
+        });
+      } else {
+        alert('Producto no encontrado');
+        router.push('/admin/productos');
+      }
+      
+      setCargando(false);
     }
-    cargarCategorias();
-  }, []);
+    cargarDatos();
+  }, [id, router]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value, type } = e.target;
@@ -54,26 +81,22 @@ export default function NuevoProductoPage() {
     const archivo = e.target.files?.[0];
     if (!archivo) return;
 
-    // Validar tamaño
     if (archivo.size > 5 * 1024 * 1024) {
       alert('La imagen no puede superar 5MB');
       return;
     }
 
-    // Validar tipo
     const tiposPermitidos = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
     if (!tiposPermitidos.includes(archivo.type)) {
       alert('Solo se permiten imágenes JPG, PNG, WebP o GIF');
       return;
     }
 
-    // Preview local
     const urlLocal = URL.createObjectURL(archivo);
     setPreviewUrl(urlLocal);
 
-    // Subir a Supabase Storage
     setSubiendoImagen(true);
-    const urlPublica = await subirImagenProducto(archivo, 'temp-' + Date.now(), 0);
+    const urlPublica = await subirImagenProducto(archivo, id, 0);
     setSubiendoImagen(false);
 
     if (urlPublica) {
@@ -84,7 +107,10 @@ export default function NuevoProductoPage() {
     }
   };
 
-  const removeImage = () => {
+  const removeImage = async () => {
+    if (formulario.imagen_url && formulario.imagen_url.includes('productos/')) {
+      await eliminarImagenProducto(formulario.imagen_url);
+    }
     setFormulario(prev => ({ ...prev, imagen_url: '' }));
     setPreviewUrl(null);
     if (fileInputRef.current) {
@@ -105,18 +131,21 @@ export default function NuevoProductoPage() {
     e.preventDefault();
     setGuardando(true);
 
-    const { error } = await supabase.from('productos').insert({
-      nombre: formulario.nombre,
-      slug: formulario.slug || generateSlug(formulario.nombre),
-      descripcion_corta: formulario.descripcion_corta,
-      descripcion: formulario.descripcion,
-      precio_base: parseFloat(formulario.precio_base),
-      precio_oferta: formulario.precio_oferta ? parseFloat(formulario.precio_oferta) : null,
-      categoria_id: formulario.categoria_id || null,
-      imagen_url: formulario.imagen_url || null,
-      destacado: formulario.destacado,
-      activo: formulario.activo,
-    });
+    const { error } = await supabase
+      .from('productos')
+      .update({
+        nombre: formulario.nombre,
+        slug: formulario.slug || generateSlug(formulario.nombre),
+        descripcion_corta: formulario.descripcion_corta,
+        descripcion: formulario.descripcion,
+        precio_base: parseFloat(formulario.precio_base),
+        precio_oferta: formulario.precio_oferta ? parseFloat(formulario.precio_oferta) : null,
+        categoria_id: formulario.categoria_id || null,
+        imagen_url: formulario.imagen_url || null,
+        destacado: formulario.destacado,
+        activo: formulario.activo,
+      })
+      .eq('id', id);
 
     if (error) {
       alert('Error: ' + error.message);
@@ -127,6 +156,28 @@ export default function NuevoProductoPage() {
     setGuardando(false);
   };
 
+  const handleDelete = async () => {
+    if (!confirm('¿Estás seguro de eliminar este producto?')) return;
+    
+    setGuardando(true);
+    const { error } = await supabase.from('productos').delete().eq('id', id);
+    
+    if (error) {
+      alert('Error: ' + error.message);
+    } else {
+      router.push('/admin/productos');
+    }
+    setGuardando(false);
+  };
+
+  if (cargando) {
+    return (
+      <div className="max-w-3xl mx-auto px-4 py-8 text-center">
+        <div className="animate-spin w-8 h-8 border-4 border-[#FF6B00] border-t-transparent rounded-full mx-auto"></div>
+      </div>
+    );
+  }
+
   return (
     <div className="max-w-3xl mx-auto px-4 py-8">
       <Link href="/admin/productos" className="inline-flex items-center text-[#FF6B00] hover:text-[#CC5500] mb-6">
@@ -134,7 +185,13 @@ export default function NuevoProductoPage() {
         Volver a productos
       </Link>
 
-      <h1 className="text-2xl font-bold text-[#1A1A1A] mb-8">Nuevo Producto</h1>
+      <div className="flex items-center justify-between mb-8">
+        <h1 className="text-2xl font-bold text-[#1A1A1A]">Editar Producto</h1>
+        <Button onClick={handleDelete} variant="danger" size="sm">
+          <Trash2 className="w-4 h-4 mr-1" />
+          Eliminar
+        </Button>
+      </div>
 
       <form onSubmit={handleSubmit} className="bg-white border rounded-xl p-6 space-y-6">
         {/* Información básica */}
@@ -227,7 +284,6 @@ export default function NuevoProductoPage() {
         <div>
           <h2 className="text-lg font-semibold text-[#1A1A1A] mb-4">Imagen del Producto</h2>
           
-          {/* Zona de upload */}
           <div 
             className={`border-2 border-dashed rounded-xl p-6 text-center transition-colors ${
               previewUrl || formulario.imagen_url 
@@ -276,7 +332,6 @@ export default function NuevoProductoPage() {
             className="hidden"
           />
 
-          {/* URL manual alternativa */}
           <div className="mt-4">
             <Input
               label="O ingresa URL de imagen"
@@ -321,7 +376,7 @@ export default function NuevoProductoPage() {
           </Link>
           <Button type="submit" loading={guardando} className="flex-1">
             <Save className="w-4 h-4 mr-2" />
-            Guardar Producto
+            Guardar Cambios
           </Button>
         </div>
       </form>

@@ -29,7 +29,7 @@ function LoginForm() {
       setError('Email o contraseña incorrectos');
       setLoading(false);
     } else {
-      router.push(redirectTo);
+      window.location.href = redirectTo;
     }
   };
 

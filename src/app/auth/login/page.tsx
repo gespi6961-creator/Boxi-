@@ -1,8 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { Mail, Lock, LogIn } from 'lucide-react';
 import { useAuth } from '@/lib/auth';
 import Button from '@/components/ui/Button';
@@ -10,6 +10,8 @@ import Input from '@/components/ui/Input';
 
 export default function LoginPage() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const redirectTo = searchParams.get('redirect') || '/cuenta';
   const { signIn, loading: authLoading } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -27,7 +29,8 @@ export default function LoginPage() {
       setError('Email o contraseña incorrectos');
       setLoading(false);
     } else {
-      router.push('/cuenta');
+      // Redirect to the original destination or default
+      router.push(redirectTo);
     }
   };
 

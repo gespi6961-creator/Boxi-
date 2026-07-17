@@ -1,7 +1,7 @@
 'use client';
 
-import { useState, useEffect, useRef, use } from 'react';
-import { useRouter } from 'next/navigation';
+import { useState, useEffect, useRef } from 'react';
+import { useRouter, useParams } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, Save, Upload, X, Trash2 } from 'lucide-react';
 import { createClient } from '@supabase/supabase-js';
@@ -14,9 +14,10 @@ const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 );
 
-export default function EditarProductoPage({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = use(params);
+export default function EditarProductoPage() {
   const router = useRouter();
+  const params = useParams();
+  const id = params?.id as string;
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [categorias, setCategorias] = useState<any[]>([]);
   const [guardando, setGuardando] = useState(false);
@@ -37,6 +38,8 @@ export default function EditarProductoPage({ params }: { params: Promise<{ id: s
   });
 
   useEffect(() => {
+    if (!id) return;
+    
     async function cargarDatos() {
       const [categoriasRes, productoRes] = await Promise.all([
         supabase.from('categorias').select('*').order('orden'),
@@ -59,6 +62,9 @@ export default function EditarProductoPage({ params }: { params: Promise<{ id: s
           destacado: prod.destacado || false,
           activo: prod.activo ?? true,
         });
+        if (prod.imagen_url) {
+          setPreviewUrl(prod.imagen_url);
+        }
       } else {
         alert('Producto no encontrado');
         router.push('/admin/productos');
@@ -102,8 +108,8 @@ export default function EditarProductoPage({ params }: { params: Promise<{ id: s
     if (urlPublica) {
       setFormulario(prev => ({ ...prev, imagen_url: urlPublica }));
     } else {
-      alert('Error al subir la imagen');
-      setPreviewUrl(null);
+      alert('Error al subir la imagen. Verifica que el bucket "productos" exista en Supabase Storage.');
+      setPreviewUrl(formulario.imagen_url || null);
     }
   };
 
@@ -174,6 +180,7 @@ export default function EditarProductoPage({ params }: { params: Promise<{ id: s
     return (
       <div className="max-w-3xl mx-auto px-4 py-8 text-center">
         <div className="animate-spin w-8 h-8 border-4 border-[#FF6B00] border-t-transparent rounded-full mx-auto"></div>
+        <p className="mt-4 text-gray-600">Cargando producto...</p>
       </div>
     );
   }
@@ -286,16 +293,16 @@ export default function EditarProductoPage({ params }: { params: Promise<{ id: s
           
           <div 
             className={`border-2 border-dashed rounded-xl p-6 text-center transition-colors ${
-              previewUrl || formulario.imagen_url 
+              previewUrl 
                 ? 'border-[#FF6B00] bg-orange-50' 
                 : 'border-gray-300 hover:border-[#FF6B00] cursor-pointer'
             }`}
-            onClick={() => !previewUrl && !formulario.imagen_url && fileInputRef.current?.click()}
+            onClick={() => !previewUrl && fileInputRef.current?.click()}
           >
-            {previewUrl || formulario.imagen_url ? (
+            {previewUrl ? (
               <div className="relative inline-block">
                 <img 
-                  src={previewUrl || formulario.imagen_url} 
+                  src={previewUrl} 
                   alt="Preview" 
                   className="max-h-48 rounded-lg object-contain"
                 />

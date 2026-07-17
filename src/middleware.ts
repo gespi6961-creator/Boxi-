@@ -1,6 +1,9 @@
 import { createServerClient, type CookieOptions } from '@supabase/ssr';
 import { NextResponse, type NextRequest } from 'next/server';
 
+// Emails de administradores - agregar aqui los emails que tengan acceso al admin
+const ADMIN_EMAILS = ['gespi6961@gmail.com'];
+
 export async function middleware(request: NextRequest) {
   let response = NextResponse.next({
     request: { headers: request.headers },
@@ -40,12 +43,19 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(url);
   }
 
-  // Proteger rutas admin
+  // Proteger rutas admin - solo admins
   if (request.nextUrl.pathname.startsWith('/admin')) {
     if (!user) {
       const url = request.nextUrl.clone();
       url.pathname = '/auth/login';
       url.searchParams.set('redirect', request.nextUrl.pathname);
+      return NextResponse.redirect(url);
+    }
+    // Verificar si es admin
+    if (!ADMIN_EMAILS.includes(user.email || '')) {
+      const url = request.nextUrl.clone();
+      url.pathname = '/cuenta';
+      url.searchParams.set('error', 'no_admin');
       return NextResponse.redirect(url);
     }
   }

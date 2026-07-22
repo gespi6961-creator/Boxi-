@@ -31,13 +31,23 @@ export default function EditarProductoPage() {
 }
 
 function EditarForm({ id, router }: { id: string; router: any }) {
-  const fileInputRef = useRef<HTMLInputElement>(null);
   const [categorias, setCategorias] = useState<any[]>([]);
   const [guardando, setGuardando] = useState(false);
-  const [subiendoImagen, setSubiendoImagen] = useState(false);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+
+  // Imágenes: 3 slots
+  const [preview1, setPreview1] = useState<string | null>(null);
+  const [preview2, setPreview2] = useState<string | null>(null);
+  const [preview3, setPreview3] = useState<string | null>(null);
+  const [subiendo1, setSubiendo1] = useState(false);
+  const [subiendo2, setSubiendo2] = useState(false);
+  const [subiendo3, setSubiendo3] = useState(false);
+
+  const fileRef1 = useRef<HTMLInputElement>(null);
+  const fileRef2 = useRef<HTMLInputElement>(null);
+  const fileRef3 = useRef<HTMLInputElement>(null);
+
   const [formulario, setFormulario] = useState({
     nombre: '',
     slug: '',
@@ -47,6 +57,8 @@ function EditarForm({ id, router }: { id: string; router: any }) {
     precio_oferta: '',
     categoria_id: '',
     imagen_url: '',
+    imagen_url_2: '',
+    imagen_url_3: '',
     destacado: false,
     activo: true,
   });
@@ -60,7 +72,7 @@ function EditarForm({ id, router }: { id: string; router: any }) {
         ]);
 
         if (categoriasRes.data) setCategorias(categoriasRes.data);
-        
+
         if (productoRes.error) {
           setError('Producto no encontrado: ' + productoRes.error.message);
           setCargando(false);
@@ -78,12 +90,14 @@ function EditarForm({ id, router }: { id: string; router: any }) {
             precio_oferta: prod.precio_oferta?.toString() || '',
             categoria_id: prod.categoria_id || '',
             imagen_url: prod.imagen_url || '',
+            imagen_url_2: prod.imagen_url_2 || '',
+            imagen_url_3: prod.imagen_url_3 || '',
             destacado: prod.destacado || false,
             activo: prod.activo ?? true,
           });
-          if (prod.imagen_url) {
-            setPreviewUrl(prod.imagen_url);
-          }
+          if (prod.imagen_url) setPreview1(prod.imagen_url);
+          if (prod.imagen_url_2) setPreview2(prod.imagen_url_2);
+          if (prod.imagen_url_3) setPreview3(prod.imagen_url_3);
         }
       } catch (err: any) {
         setError('Error cargando datos: ' + err.message);
@@ -101,7 +115,23 @@ function EditarForm({ id, router }: { id: string; router: any }) {
     });
   };
 
-  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const uploadImage = async (archivo: File, index: number): Promise<string | null> => {
+    const formData = new FormData();
+    formData.append('file', archivo);
+    formData.append('productoId', id);
+    formData.append('index', index.toString());
+
+    const response = await fetch('/api/upload', { method: 'POST', body: formData });
+    const result = await response.json();
+
+    if (!response.ok) {
+      alert('Error al subir: ' + (result.error || 'Error desconocido'));
+      return null;
+    }
+    return result.url;
+  };
+
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>, slot: number) => {
     const archivo = e.target.files?.[0];
     if (!archivo) return;
 
@@ -110,81 +140,78 @@ function EditarForm({ id, router }: { id: string; router: any }) {
       return;
     }
 
-    const urlLocal = URL.createObjectURL(archivo);
-    setPreviewUrl(urlLocal);
+    const setPreview = slot === 1 ? setPreview1 : slot === 2 ? setPreview2 : setPreview3;
+    const setSubiendo = slot === 1 ? setSubiendo1 : slot === 2 ? setSubiendo2 : setSubiendo3;
+    const field = slot === 1 ? 'imagen_url' : slot === 2 ? 'imagen_url_2' : 'imagen_url_3';
 
-    setSubiendoImagen(true);
-    try {
-      const formData = new FormData();
-      formData.append('file', archivo);
-      formData.append('productoId', id);
-      formData.append('index', '0');
+    setPreview(URL.createObjectURL(archivo));
+    setSubiendo(true);
 
-      const response = await fetch('/api/upload', {
-        method: 'POST',
-        body: formData,
-      });
-
-      const result = await response.json();
-
-      if (!response.ok) {
-        alert('Error al subir: ' + (result.error || 'Error desconocido'));
-        setPreviewUrl(formulario.imagen_url || null);
-      } else {
-        setFormulario(prev => ({ ...prev, imagen_url: result.url }));
-      }
-    } catch (err: any) {
-      alert('Error: ' + err.message);
-      setPreviewUrl(formulario.imagen_url || null);
-    }
-    setSubiendoImagen(false);
-  };
-
-  const removeImage = () => {
-    setFormulario(prev => ({ ...prev, imagen_url: '' }));
-    setPreviewUrl(null);
-    if (fileInputRef.current) fileInputRef.current.value = '';
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setGuardando(true);
-
-    const { error } = await supabase
-      .from('productos')
-      .update({
-        nombre: formulario.nombre,
-        slug: formulario.slug || formulario.nombre.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''),
-        descripcion_corta: formulario.descripcion_corta,
-        descripcion: formulario.descripcion,
-        precio_base: parseFloat(formulario.precio_base),
-        precio_oferta: formulario.precio_oferta ? parseFloat(formulario.precio_oferta) : null,
-        categoria_id: formulario.categoria_id || null,
-        imagen_url: formulario.imagen_url || null,
-        destacado: formulario.destacado,
-        activo: formulario.activo,
-      })
-      .eq('id', id);
-
-    if (error) {
-      alert('Error: ' + error.message);
+    const url = await uploadImage(archivo, slot);
+    if (url) {
+      setFormulario(prev => ({ ...prev, [field]: url }));
     } else {
-      router.push('/admin/productos');
+      setPreview(formulario.imagen_url || null);
     }
-    setGuardando(false);
+    setSubiendo(false);
   };
 
-  const handleDelete = async () => {
-    if (!confirm('¿Estás seguro de eliminar este producto?')) return;
-    setGuardando(true);
-    const { error } = await supabase.from('productos').delete().eq('id', id);
-    if (error) {
-      alert('Error: ' + error.message);
-    } else {
-      router.push('/admin/productos');
-    }
-    setGuardando(false);
+  const removeImage = (slot: number) => {
+    const setPreview = slot === 1 ? setPreview1 : slot === 2 ? setPreview2 : setPreview3;
+    const field = slot === 1 ? 'imagen_url' : slot === 2 ? 'imagen_url_2' : 'imagen_url_3';
+    const fileRef = slot === 1 ? fileRef1 : slot === 2 ? fileRef2 : fileRef3;
+
+    setPreview(null);
+    setFormulario(prev => ({ ...prev, [field]: '' }));
+    if (fileRef.current) fileRef.current.value = '';
   };
+
+  const ImageSlot = ({
+    slot, preview, subiendo, fileRef, label
+  }: {
+    slot: number; preview: string | null; subiendo: boolean;
+    fileRef: React.RefObject<HTMLInputElement | null>; label: string;
+  }) => (
+    <div>
+      <label className="block text-sm font-medium text-gray-700 mb-2">{label}</label>
+      <div
+        className={`border-2 border-dashed rounded-xl p-4 text-center transition-colors ${
+          preview ? 'border-[#FF6B00] bg-orange-50' : 'border-gray-300 hover:border-[#FF6B00] cursor-pointer'
+        }`}
+        onClick={() => !preview && fileRef.current?.click()}
+      >
+        {preview ? (
+          <div className="relative inline-block">
+            <img src={preview} alt={`Preview ${slot}`} className="max-h-40 rounded-lg object-contain" />
+            <button
+              type="button"
+              onClick={(e) => { e.stopPropagation(); removeImage(slot); }}
+              className="absolute -top-2 -right-2 bg-red-500 text-white p-1 rounded-full hover:bg-red-600"
+            >
+              <X className="w-4 h-4" />
+            </button>
+            {subiendo && (
+              <div className="absolute inset-0 bg-black/50 rounded-lg flex items-center justify-center">
+                <div className="animate-spin w-6 h-6 border-4 border-white border-t-transparent"></div>
+              </div>
+            )}
+          </div>
+        ) : (
+          <div className="py-2">
+            <Upload className="w-8 h-8 mx-auto text-gray-400 mb-1" />
+            <p className="text-sm text-gray-500">Seleccionar imagen</p>
+          </div>
+        )}
+      </div>
+      <input
+        ref={fileRef}
+        type="file"
+        accept="image/jpeg,image/png,image/webp"
+        onChange={(e) => handleFileChange(e, slot)}
+        className="hidden"
+      />
+    </div>
+  );
 
   if (cargando) {
     return (
@@ -303,54 +330,11 @@ function EditarForm({ id, router }: { id: string; router: any }) {
         </div>
 
         <div>
-          <h2 className="text-lg font-semibold text-[#1A1A1A] mb-4">Imagen</h2>
-          <div 
-            className={`border-2 border-dashed rounded-xl p-6 text-center transition-colors ${
-              previewUrl ? 'border-[#FF6B00] bg-orange-50' : 'border-gray-300 hover:border-[#FF6B00] cursor-pointer'
-            }`}
-            onClick={() => !previewUrl && fileInputRef.current?.click()}
-          >
-            {previewUrl ? (
-              <div className="relative inline-block">
-                <img src={previewUrl} alt="Preview" className="max-h-48 rounded-lg object-contain" />
-                <button
-                  type="button"
-                  onClick={(e) => { e.stopPropagation(); removeImage(); }}
-                  className="absolute -top-2 -right-2 bg-red-500 text-white p-1 rounded-full hover:bg-red-600"
-                >
-                  <X className="w-4 h-4" />
-                </button>
-                {subiendoImagen && (
-                  <div className="absolute inset-0 bg-black/50 rounded-lg flex items-center justify-center">
-                    <div className="animate-spin w-8 h-8 border-4 border-white border-t-transparent"></div>
-                  </div>
-                )}
-              </div>
-            ) : (
-              <div>
-                <Upload className="w-12 h-12 mx-auto text-gray-400 mb-3" />
-                <p className="text-gray-600 mb-2">Haz clic para seleccionar imagen</p>
-                <p className="text-sm text-gray-400">JPG, PNG, WebP (máx. 5MB)</p>
-              </div>
-            )}
-          </div>
-          <input
-            ref={fileInputRef}
-            type="file"
-            accept="image/jpeg,image/png,image/webp"
-            onChange={handleFileChange}
-            className="hidden"
-          />
-          <div className="mt-3">
-            <label className="block text-sm font-medium text-gray-700 mb-1">O pega una URL</label>
-            <input
-              type="url"
-              name="imagen_url"
-              value={formulario.imagen_url}
-              onChange={handleInputChange}
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FF6B00]"
-              placeholder="https://..."
-            />
+          <h2 className="text-lg font-semibold text-[#1A1A1A] mb-4">Imágenes del Producto (máx. 3)</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <ImageSlot slot={1} preview={preview1} subiendo={subiendo1} fileRef={fileRef1} label="Imagen principal" />
+            <ImageSlot slot={2} preview={preview2} subiendo={subiendo2} fileRef={fileRef2} label="Imagen 2" />
+            <ImageSlot slot={3} preview={preview3} subiendo={subiendo3} fileRef={fileRef3} label="Imagen 3" />
           </div>
         </div>
 
@@ -382,4 +366,46 @@ function EditarForm({ id, router }: { id: string; router: any }) {
       </form>
     </div>
   );
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setGuardando(true);
+
+    const { error } = await supabase
+      .from('productos')
+      .update({
+        nombre: formulario.nombre,
+        slug: formulario.slug || formulario.nombre.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''),
+        descripcion_corta: formulario.descripcion_corta,
+        descripcion: formulario.descripcion,
+        precio_base: parseFloat(formulario.precio_base),
+        precio_oferta: formulario.precio_oferta ? parseFloat(formulario.precio_oferta) : null,
+        categoria_id: formulario.categoria_id || null,
+        imagen_url: formulario.imagen_url || null,
+        imagen_url_2: formulario.imagen_url_2 || null,
+        imagen_url_3: formulario.imagen_url_3 || null,
+        destacado: formulario.destacado,
+        activo: formulario.activo,
+      })
+      .eq('id', id);
+
+    if (error) {
+      alert('Error: ' + error.message);
+    } else {
+      router.push('/admin/productos');
+    }
+    setGuardando(false);
+  }
+
+  async function handleDelete() {
+    if (!confirm('¿Estás seguro de eliminar este producto?')) return;
+    setGuardando(true);
+    const { error } = await supabase.from('productos').delete().eq('id', id);
+    if (error) {
+      alert('Error: ' + error.message);
+    } else {
+      router.push('/admin/productos');
+    }
+    setGuardando(false);
+  }
 }

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Package, ShoppingCart, Users, DollarSign, TrendingUp, ArrowUpRight } from 'lucide-react';
+import { Package, ShoppingCart, Users, DollarSign, TrendingUp, ArrowUpRight, LayoutGrid } from 'lucide-react';
 import { createClient } from '@supabase/supabase-js';
 import { formatPrecio, formatFecha } from '@/lib/utils';
 
@@ -133,6 +133,13 @@ export default function AdminDashboard() {
               <div className="flex items-center gap-3">
                 <Package className="w-5 h-5 text-[#FF6B00]" />
                 <span className="font-medium">Gestionar Productos</span>
+              </div>
+              <ArrowUpRight className="w-4 h-4 text-gray-400" />
+            </Link>
+            <Link href="/admin/categorias" className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+              <div className="flex items-center gap-3">
+                <LayoutGrid className="w-5 h-5 text-[#FF6B00]" />
+                <span className="font-medium">Gestionar Categorías</span>
               </div>
               <ArrowUpRight className="w-4 h-4 text-gray-400" />
             </Link>

@@ -1,11 +1,10 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { createContext, useContext, useState, useEffect, useCallback, ReactNode } from 'react';
 import type { CarritoItem, Producto, Variante, Cupon } from '@/types';
 
 const CARRITO_KEY = 'boxi_carrito';
 
-// Obtener carrito del localStorage
 function getCarritoStorage(): CarritoItem[] {
   if (typeof window === 'undefined') return [];
   try {
@@ -16,56 +15,82 @@ function getCarritoStorage(): CarritoItem[] {
   }
 }
 
-// Guardar carrito en localStorage
 function setCarritoStorage(items: CarritoItem[]): void {
   if (typeof window === 'undefined') return;
   localStorage.setItem(CARRITO_KEY, JSON.stringify(items));
 }
 
-export function useCarrito() {
+function crearVarianteDefault(producto: Producto): Variante {
+  return {
+    id: `default-${producto.id}`,
+    producto_id: producto.id,
+    nombre: 'Único',
+    sku: null,
+    precio: producto.precio_oferta ?? producto.precio_base,
+    stock: Infinity,
+    imagen_url: null,
+    activa: true,
+    created_at: new Date().toISOString(),
+  };
+}
+
+interface CarritoContextType {
+  items: CarritoItem[];
+  cupon: Cupon | null;
+  isLoaded: boolean;
+  totalItems: number;
+  subtotal: number;
+  descuento: number;
+  total: number;
+  agregar: (producto: Producto, variante?: Variante | null, cantidad?: number) => void;
+  actualizarCantidad: (varianteId: string, cantidad: number) => void;
+  eliminar: (varianteId: string) => void;
+  limpiar: () => void;
+  aplicarCupon: (cupon: Cupon) => void;
+  removerCupon: () => void;
+}
+
+const CarritoContext = createContext<CarritoContextType | null>(null);
+
+export function CarritoProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<CarritoItem[]>([]);
   const [cupon, setCupon] = useState<Cupon | null>(null);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  // Cargar carrito al montar
   useEffect(() => {
     setItems(getCarritoStorage());
     setIsLoaded(true);
   }, []);
 
-  // Actualizar localStorage cuando cambian los items
   useEffect(() => {
     if (isLoaded) {
       setCarritoStorage(items);
     }
   }, [items, isLoaded]);
 
-  // Agregar producto al carrito
-  const agregar = useCallback((producto: Producto, variante: Variante, cantidad: number = 1) => {
+  const agregar = useCallback((producto: Producto, variante?: Variante | null, cantidad: number = 1) => {
+    const varianteFinal = variante ?? crearVarianteDefault(producto);
+    
     setItems((prev) => {
       const existingIndex = prev.findIndex(
-        (item) => item.variante.id === variante.id
+        (item) => item.variante.id === varianteFinal.id
       );
 
       if (existingIndex >= 0) {
-        // Actualizar cantidad
         const newItems = [...prev];
         newItems[existingIndex] = {
           ...newItems[existingIndex],
-          cantidad: newItems[existingIndex].cantidad + cantidad,
+          cantidad: cantidad,
         };
         return newItems;
       }
 
-      // Agregar nuevo item
-      return [...prev, { producto, variante, cantidad }];
+      return [...prev, { producto, variante: varianteFinal, cantidad }];
     });
   }, []);
 
-  // Actualizar cantidad de un item
   const actualizarCantidad = useCallback((varianteId: string, cantidad: number) => {
     if (cantidad < 1) return;
-    
     setItems((prev) =>
       prev.map((item) =>
         item.variante.id === varianteId ? { ...item, cantidad } : item
@@ -73,34 +98,28 @@ export function useCarrito() {
     );
   }, []);
 
-  // Eliminar item del carrito
   const eliminar = useCallback((varianteId: string) => {
     setItems((prev) => prev.filter((item) => item.variante.id !== varianteId));
   }, []);
 
-  // Limpiar carrito
   const limpiar = useCallback(() => {
     setItems([]);
     setCupon(null);
   }, []);
 
-  // Aplicar cupón
   const aplicarCupon = useCallback((nuevoCupon: Cupon) => {
     setCupon(nuevoCupon);
   }, []);
 
-  // Remover cupón
   const removerCupon = useCallback(() => {
     setCupon(null);
   }, []);
 
-  // Calcular subtotal
   const subtotal = items.reduce((total, item) => {
     const precio = item.variante.precio ?? item.producto.precio_base;
     return total + precio * item.cantidad;
   }, 0);
 
-  // Calcular descuento
   let descuento = 0;
   if (cupon) {
     if (cupon.tipo === 'porcentaje') {
@@ -110,25 +129,36 @@ export function useCarrito() {
     }
   }
 
-  // Total de items
   const totalItems = items.reduce((total, item) => total + item.cantidad, 0);
-
-  // Total final
   const total = subtotal - descuento;
 
-  return {
-    items,
-    cupon,
-    isLoaded,
-    totalItems,
-    subtotal,
-    descuento,
-    total,
-    agregar,
-    actualizarCantidad,
-    eliminar,
-    limpiar,
-    aplicarCupon,
-    removerCupon,
-  };
+  return (
+    <CarritoContext.Provider
+      value={{
+        items,
+        cupon,
+        isLoaded,
+        totalItems,
+        subtotal,
+        descuento,
+        total,
+        agregar,
+        actualizarCantidad,
+        eliminar,
+        limpiar,
+        aplicarCupon,
+        removerCupon,
+      }}
+    >
+      {children}
+    </CarritoContext.Provider>
+  );
+}
+
+export function useCarrito() {
+  const context = useContext(CarritoContext);
+  if (!context) {
+    throw new Error('useCarrito debe usarse dentro de un CarritoProvider');
+  }
+  return context;
 }

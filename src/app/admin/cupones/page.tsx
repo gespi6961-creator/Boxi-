@@ -2,15 +2,10 @@
 
 import { useState, useEffect } from 'react';
 import { Plus, Edit, Trash2 } from 'lucide-react';
-import { createClient } from '@supabase/supabase-js';
+import { getSupabase } from '@/lib/supabase';
 import Button from '@/components/ui/Button';
 import Input from '@/components/ui/Input';
 import { formatFecha } from '@/lib/utils';
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
 
 export default function AdminCuponesPage() {
   const [cupones, setCupones] = useState<any[]>([]);
@@ -31,6 +26,7 @@ export default function AdminCuponesPage() {
   }, []);
 
   const cargarCupones = async () => {
+    const supabase = getSupabase();
     const { data } = await supabase.from('cupones').select('*').order('created_at', { ascending: false });
     setCupones(data || []);
     setCargando(false);
@@ -42,6 +38,7 @@ export default function AdminCuponesPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const supabase = getSupabase();
     
     const datos = {
       codigo: formulario.codigo.toUpperCase(),
@@ -79,6 +76,7 @@ export default function AdminCuponesPage() {
 
   const eliminarCupon = async (id: string) => {
     if (!confirm('¿Eliminar este cupón?')) return;
+    const supabase = getSupabase();
     await supabase.from('cupones').delete().eq('id', id);
     cargarCupones();
   };
@@ -117,7 +115,7 @@ export default function AdminCuponesPage() {
                 name="tipo"
                 value={formulario.tipo}
                 onChange={handleInputChange}
-                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FF6B00]"
+                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C85A00]"
               >
                 <option value="porcentaje">Porcentaje (%)</option>
                 <option value="fijo">Monto fijo ($)</option>
@@ -173,7 +171,7 @@ export default function AdminCuponesPage() {
       <div className="bg-white border rounded-xl overflow-hidden">
         {cargando ? (
           <div className="text-center py-12">
-            <div className="animate-spin w-8 h-8 border-4 border-[#FF6B00] border-t-transparent rounded-full mx-auto"></div>
+            <div className="animate-spin w-8 h-8 border-4 border-[#C85A00] border-t-transparent rounded-full mx-auto"></div>
           </div>
         ) : cupones.length === 0 ? (
           <div className="text-center py-12 text-gray-500">No hay cupones creados</div>
@@ -195,7 +193,7 @@ export default function AdminCuponesPage() {
                 {cupones.map((cupon) => (
                   <tr key={cupon.id} className="hover:bg-gray-50">
                     <td className="px-6 py-4">
-                      <span className="font-mono font-bold text-[#FF6B00]">{cupon.codigo}</span>
+                      <span className="font-mono font-bold text-[#C85A00]">{cupon.codigo}</span>
                     </td>
                     <td className="px-6 py-4 text-gray-600 capitalize">{cupon.tipo}</td>
                     <td className="px-6 py-4 font-medium">
@@ -214,7 +212,7 @@ export default function AdminCuponesPage() {
                       <div className="flex items-center justify-end gap-2">
                         <button
                           onClick={() => editarCupon(cupon)}
-                          className="p-2 text-gray-400 hover:text-[#FF6B00] hover:bg-orange-50 rounded-lg"
+                          className="p-2 text-gray-400 hover:text-[#C85A00] hover:bg-orange-50 rounded-lg"
                         >
                           <Edit className="w-4 h-4" />
                         </button>

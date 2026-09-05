@@ -4,15 +4,10 @@ import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, Save, Upload, X, Image as ImageIcon } from 'lucide-react';
-import { createClient } from '@supabase/supabase-js';
+import { getSupabase } from '@/lib/supabase';
 import Button from '@/components/ui/Button';
 import Input from '@/components/ui/Input';
 import { subirImagenProducto } from '@/lib/storage';
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
 
 export default function NuevoProductoPage() {
   const router = useRouter();
@@ -36,6 +31,7 @@ export default function NuevoProductoPage() {
 
   useEffect(() => {
     async function cargarCategorias() {
+      const supabase = getSupabase();
       const { data } = await supabase.from('categorias').select('*').order('orden');
       setCategorias(data || []);
     }
@@ -120,6 +116,7 @@ export default function NuevoProductoPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setGuardando(true);
+    const supabase = getSupabase();
 
     const { error } = await supabase.from('productos').insert({
       nombre: formulario.nombre,
@@ -145,7 +142,7 @@ export default function NuevoProductoPage() {
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-8">
-      <Link href="/admin/productos" className="inline-flex items-center text-[#FF6B00] hover:text-[#CC5500] mb-6">
+      <Link href="/admin/productos" className="inline-flex items-center text-[#C85A00] hover:text-[#A04800] mb-6">
         <ArrowLeft className="w-4 h-4 mr-1" />
         Volver a productos
       </Link>
@@ -179,7 +176,7 @@ export default function NuevoProductoPage() {
                 name="categoria_id"
                 value={formulario.categoria_id}
                 onChange={handleInputChange}
-                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FF6B00]"
+                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C85A00]"
               >
                 <option value="">Seleccionar categoría</option>
                 {categorias.map((cat) => (
@@ -194,7 +191,7 @@ export default function NuevoProductoPage() {
                 name="descripcion_corta"
                 value={formulario.descripcion_corta}
                 onChange={handleInputChange}
-                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FF6B00]"
+                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C85A00]"
                 placeholder="Aparecerá en la card del producto"
               />
             </div>
@@ -205,7 +202,7 @@ export default function NuevoProductoPage() {
                 value={formulario.descripcion}
                 onChange={handleInputChange}
                 rows={4}
-                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FF6B00]"
+                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C85A00]"
                 placeholder="Descripción detallada del producto"
               />
             </div>
@@ -247,8 +244,8 @@ export default function NuevoProductoPage() {
           <div 
             className={`border-2 border-dashed rounded-xl p-6 text-center transition-colors ${
               previewUrl || formulario.imagen_url 
-                ? 'border-[#FF6B00] bg-orange-50' 
-                : 'border-gray-300 hover:border-[#FF6B00] cursor-pointer'
+                ? 'border-[#C85A00] bg-orange-50' 
+                : 'border-gray-300 hover:border-[#C85A00] cursor-pointer'
             }`}
             onClick={() => !previewUrl && !formulario.imagen_url && fileInputRef.current?.click()}
           >
@@ -312,7 +309,7 @@ export default function NuevoProductoPage() {
               name="activo"
               checked={formulario.activo}
               onChange={handleInputChange}
-              className="rounded border-gray-300 text-[#FF6B00] focus:ring-[#FF6B00]"
+              className="rounded border-gray-300 text-[#C85A00] focus:ring-[#C85A00]"
             />
             <span className="text-sm font-medium text-gray-700">Activo</span>
           </label>
@@ -322,7 +319,7 @@ export default function NuevoProductoPage() {
               name="destacado"
               checked={formulario.destacado}
               onChange={handleInputChange}
-              className="rounded border-gray-300 text-[#FF6B00] focus:ring-[#FF6B00]"
+              className="rounded border-gray-300 text-[#C85A00] focus:ring-[#C85A00]"
             />
             <span className="text-sm font-medium text-gray-700">Destacado</span>
           </label>

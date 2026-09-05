@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /auth
+Disallow: /api
+Disallow: /cuenta
+
+Sitemap: https://boxi-store.vercel.app/sitemap.xml

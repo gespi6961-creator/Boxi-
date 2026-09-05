@@ -1,23 +1,14 @@
 'use client';
 
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
-import { createBrowserClient } from '@supabase/ssr';
 import { Session, User } from '@supabase/supabase-js';
-
-function createClient() {
-  return createBrowserClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-  );
-}
-
-const supabase = createClient();
+import { getSupabase } from '@/lib/supabase';
 
 interface AuthContextType {
   user: User | null;
   session: Session | null;
   loading: boolean;
-  signUp: (email: string, password: string, nombre: string) => Promise<{ error: string | null }>;
+  signUp: (email: string, password: string, nombre: string, apellido: string, telefono?: string) => Promise<{ error: string | null }>;
   signIn: (email: string, password: string) => Promise<{ error: string | null }>;
   signOut: () => Promise<void>;
 }
@@ -30,6 +21,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    const supabase = getSupabase();
+
     // Get initial session
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
@@ -46,23 +39,34 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return () => subscription.unsubscribe();
   }, []);
 
-  const signUp = async (email: string, password: string, nombre: string) => {
-    const { error } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        data: { nombre },
-      },
-    });
+  const signUp = async (email: string, password: string, nombre: string, apellido: string, telefono?: string) => {
+    try {
+      const res = await fetch('/api/auth/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password, nombre, apellido, telefono }),
+      });
 
-    if (error) {
-      return { error: error.message };
+      const data = await res.json();
+
+      if (!res.ok) {
+        return { error: data.error || 'Error al crear la cuenta' };
+      }
+
+      // Si la API devolvio una session, actualizar el estado local
+      if (data.session) {
+        const supabase = getSupabase();
+        await supabase.auth.setSession(data.session);
+      }
+
+      return { error: null };
+    } catch (err) {
+      return { error: 'Error de conexion. Intenta de nuevo.' };
     }
-
-    return { error: null };
   };
 
   const signIn = async (email: string, password: string) => {
+    const supabase = getSupabase();
     const { error } = await supabase.auth.signInWithPassword({
       email,
       password,
@@ -76,6 +80,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   const signOut = async () => {
+    const supabase = getSupabase();
     await supabase.auth.signOut();
   };
 

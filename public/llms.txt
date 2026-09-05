@@ -1,0 +1,26 @@
+# BoxiTec
+
+> BoxiTec es una tienda en linea de productos tecnologicos y gadgets con sede en Tecate, Baja California, Mexico. Ofrece smartwatches, lentes IA, bocinas, iluminacion LED, accesorios automotrices y mas, con envio a todo Mexico y pago por transferencia bancaria.
+
+Tienda de tecnologia y gadgets innovadores. Productos con garantia, envio gratis en compras mayores a $1,000 MXN, y atencion personalizada por WhatsApp.
+
+## Productos
+
+- [Catalogo completo](https://boxi-store.com/catalogo): Explora todos los productos disponibles por categoria.
+- [Ofertas y descuentos](https://boxi-store.com/catalogo?ofertas=true): Productos con precio rebajado y promociones activas.
+- [Iluminacion LED](https://boxi-store.com/catalogo?categoria=iluminacion): Luces LED para hogar, oficina y gaming.
+- [Tecnologia y Accesorios](https://boxi-store.com/catalogo?categoria=tecnologia-y-accesorios): Smartwatches, lentes IA, cargadores y mas.
+- [Automotriz](https://boxi-store.com/catalogo?categoria=automotriz): Accesorios para tu vehiculo.
+- [Bocinas y Audio](https://boxi-store.com/catalogo?categoria=bocinas-y-audio): Bocinas bluetooth, audifonos y equipos de sonido.
+
+## Informacion
+
+- [Politica de envio](https://boxi-store.com): Envio gratis en compras mayores a $1,000 MXN. Entrega en 3-7 dias habiles.
+- [Metodos de pago](https://boxi-store.com/checkout): Transferencia bancaria BBVA Mexico.
+- [Garantia](https://boxi-store.com): Todos los productos incluyen garantia.
+
+## Optional
+
+- [Instagram](https://www.instagram.com/boxi_tech): Fotos de productos y novedades.
+- [TikTok](https://www.tiktok.com/@gioespi1): Videos de productos y demos.
+- [Facebook](https://www.facebook.com/giovis.espinosa/): Noticias y promociones.

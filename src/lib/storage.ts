@@ -1,14 +1,15 @@
-import { supabase } from './supabase';
+import { getSupabaseAdmin } from './supabase';
 
 const BUCKET_NAME = 'productos';
 
 // Verificar si el bucket existe, si no crearlo
 export async function ensureBucketExists() {
-  const { data: buckets } = await supabase.storage.listBuckets();
+  const supabaseAdmin = getSupabaseAdmin();
+  const { data: buckets } = await supabaseAdmin.storage.listBuckets();
   const exists = buckets?.some(b => b.name === BUCKET_NAME);
   
   if (!exists) {
-    const { error } = await supabase.storage.createBucket(BUCKET_NAME, {
+    const { error } = await supabaseAdmin.storage.createBucket(BUCKET_NAME, {
       public: true,
       fileSizeLimit: 5 * 1024 * 1024, // 5MB
       allowedMimeTypes: ['image/jpeg', 'image/png', 'image/webp', 'image/gif'],
@@ -29,12 +30,13 @@ export async function subirImagenProducto(
   index: number = 0
 ): Promise<string | null> {
   try {
+    const supabaseAdmin = getSupabaseAdmin();
     await ensureBucketExists();
     
     const extension = archivo.name.split('.').pop() || 'jpg';
     const ruta = `${productoId}/imagen_${index}.${extension}`;
     
-    const { error } = await supabase.storage
+    const { error } = await supabaseAdmin.storage
       .from(BUCKET_NAME)
       .upload(ruta, archivo, {
         cacheControl: '3600',
@@ -46,7 +48,7 @@ export async function subirImagenProducto(
       return null;
     }
 
-    const { data } = supabase.storage
+    const { data } = supabaseAdmin.storage
       .from(BUCKET_NAME)
       .getPublicUrl(ruta);
 
@@ -60,13 +62,14 @@ export async function subirImagenProducto(
 // Eliminar imagen de producto
 export async function eliminarImagenProducto(ruta: string): Promise<boolean> {
   try {
+    const supabaseAdmin = getSupabaseAdmin();
     // Extraer la ruta relativa del URL completo
     const urlParts = ruta.split(`${BUCKET_NAME}/`);
     if (urlParts.length < 2) return false;
     
     const rutaRelativa = urlParts[1];
     
-    const { error } = await supabase.storage
+    const { error } = await supabaseAdmin.storage
       .from(BUCKET_NAME)
       .remove([rutaRelativa]);
 
@@ -79,7 +82,8 @@ export async function eliminarImagenProducto(ruta: string): Promise<boolean> {
 
 // Obtener URL pública de imagen
 export function getImagenPublicUrl(ruta: string): string {
-  const { data } = supabase.storage
+  const supabaseAdmin = getSupabaseAdmin();
+  const { data } = supabaseAdmin.storage
     .from(BUCKET_NAME)
     .getPublicUrl(ruta);
   

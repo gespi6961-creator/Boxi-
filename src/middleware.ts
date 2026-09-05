@@ -2,7 +2,7 @@ import { createServerClient, type CookieOptions } from '@supabase/ssr';
 import { NextResponse, type NextRequest } from 'next/server';
 
 // Emails de administradores - agregar aqui los emails que tengan acceso al admin
-const ADMIN_EMAILS = ['gespi6961@gmail.com'];
+const ADMIN_EMAILS = ['gespi6961@gmail.com', 'boxitec.tech@gmail.com'];
 
 export async function middleware(request: NextRequest) {
   let response = NextResponse.next({
@@ -28,6 +28,21 @@ export async function middleware(request: NextRequest) {
       },
     }
   );
+
+  // Manejar callback de recuperacion de contrasena (PKCE flow)
+  // Supabase envia un "code" como query param que debemos intercambiar por una session
+  if (request.nextUrl.pathname === '/auth/restablecer-contrasena') {
+    const code = request.nextUrl.searchParams.get('code');
+    if (code) {
+      const { error } = await supabase.auth.exchangeCodeForSession(code);
+      if (!error) {
+        // Redirigir sin el param "code" para limpiar la URL
+        const url = request.nextUrl.clone();
+        url.searchParams.delete('code');
+        return NextResponse.redirect(url);
+      }
+    }
+  }
 
   const {
     data: { user },
@@ -84,5 +99,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/admin/:path*', '/cuenta/:path*', '/checkout', '/auth/login', '/auth/registro'],
+  matcher: ['/admin/:path*', '/cuenta/:path*', '/checkout', '/auth/login', '/auth/registro', '/auth/restablecer-contrasena'],
 };

@@ -75,7 +75,7 @@ export interface Direccion {
 export interface Pedido {
   id: string;
   numero_pedido: string;
-  usuario_id: string;
+  cliente_id: string;
   estado: EstadoPedido;
   subtotal: number;
   descuento: number;
@@ -84,14 +84,26 @@ export interface Pedido {
   metodo_pago: string;
   datos_pago: Record<string, unknown>;
   direccion_envio: Direccion;
-  direccion_facturacion: Direccion | null;
   notas: string | null;
   notas_admin: string | null;
   created_at: string;
   updated_at: string;
   // Relaciones
   detalles?: PedidoDetalle[];
-  usuario?: Usuario;
+  cliente?: Cliente;
+}
+
+// Cliente
+export interface Cliente {
+  id: string;
+  nombre: string;
+  email: string;
+  telefono: string | null;
+  direccion: Direccion | null;
+  notas: string | null;
+  activo: boolean;
+  created_at: string;
+  updated_at: string;
 }
 
 // Estado de pedido
@@ -108,7 +120,7 @@ export interface PedidoDetalle {
   id: string;
   pedido_id: string;
   producto_id: string;
-  variante_id: string;
+  variante_id: string | null;
   cantidad: number;
   precio_unitario: number;
   subtotal: number;

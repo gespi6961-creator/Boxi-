@@ -5,18 +5,15 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { User, Package, MapPin, LogOut, Settings, Heart } from 'lucide-react';
 import { useAuth } from '@/lib/auth';
-import { createClient } from '@supabase/supabase-js';
+import { useFavoritos } from '@/hooks/useFavoritos';
+import { getSupabase } from '@/lib/supabase';
 import Button from '@/components/ui/Button';
 import { formatFecha, formatPrecio } from '@/lib/utils';
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
 
 export default function CuentaPage() {
   const router = useRouter();
   const { user, loading: authLoading, signOut } = useAuth();
+  const { favoritos } = useFavoritos();
   const [pedidos, setPedidos] = useState<any[]>([]);
   const [cargando, setCargando] = useState(true);
 
@@ -29,17 +26,27 @@ export default function CuentaPage() {
   useEffect(() => {
     async function cargarPedidos() {
       if (!user) return;
-      
-      const { data } = await supabase
-        .from('pedidos')
-        .select('*')
-        .eq('usuario_id', user.id)
-        .order('created_at', { ascending: false });
-      
-      setPedidos(data || []);
+      const supabase = getSupabase();
+
+      // Buscar pedidos por email del cliente
+      const { data: cliente } = await supabase
+        .from('clientes')
+        .select('id')
+        .eq('email', user.email)
+        .single();
+
+      if (cliente) {
+        const { data } = await supabase
+          .from('pedidos')
+          .select('*')
+          .eq('cliente_id', cliente.id)
+          .order('created_at', { ascending: false });
+
+        setPedidos(data || []);
+      }
       setCargando(false);
     }
-    
+
     if (user) {
       cargarPedidos();
     }
@@ -53,7 +60,7 @@ export default function CuentaPage() {
   if (authLoading || !user) {
     return (
       <div className="min-h-[60vh] flex items-center justify-center">
-        <div className="animate-spin w-8 h-8 border-4 border-[#FF6B00] border-t-transparent rounded-full"></div>
+        <div className="animate-spin w-8 h-8 border-4 border-[#C85A00] border-t-transparent rounded-full"></div>
       </div>
     );
   }
@@ -65,7 +72,7 @@ export default function CuentaPage() {
         <aside className="lg:col-span-1">
           <div className="bg-white border rounded-xl p-6 sticky top-24">
             <div className="text-center mb-6">
-              <div className="w-20 h-20 bg-[#FF6B00] rounded-full flex items-center justify-center mx-auto mb-3">
+              <div className="w-20 h-20 bg-[#C85A00] rounded-full flex items-center justify-center mx-auto mb-3">
                 <span className="text-white text-2xl font-bold">
                   {user.email?.charAt(0).toUpperCase()}
                 </span>
@@ -75,7 +82,7 @@ export default function CuentaPage() {
             </div>
 
             <nav className="space-y-2">
-              <Link href="/cuenta" className="flex items-center gap-3 px-4 py-2 bg-[#FF6B00] text-white rounded-lg">
+              <Link href="/cuenta" className="flex items-center gap-3 px-4 py-2 bg-[#C85A00] text-white rounded-lg">
                 <User className="w-5 h-5" />
                 Mi Cuenta
               </Link>
@@ -86,6 +93,13 @@ export default function CuentaPage() {
               <Link href="/cuenta/perfil" className="flex items-center gap-3 px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg">
                 <Settings className="w-5 h-5" />
                 Editar Perfil
+              </Link>
+              <Link href="/cuenta/favoritos" className="flex items-center gap-3 px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg">
+                <Heart className="w-5 h-5" />
+                Mis Favoritos
+                {favoritos.length > 0 && (
+                  <span className="ml-auto bg-blue-100 text-blue-700 text-xs font-bold px-2 py-0.5 rounded-full">{favoritos.length}</span>
+                )}
               </Link>
               <button
                 onClick={handleSignOut}
@@ -106,8 +120,8 @@ export default function CuentaPage() {
           <div className="grid sm:grid-cols-3 gap-4">
             <div className="bg-white border rounded-xl p-4">
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-[#FF6B00]/10 rounded-lg flex items-center justify-center">
-                  <Package className="w-6 h-6 text-[#FF6B00]" />
+                <div className="w-12 h-12 bg-[#C85A00]/10 rounded-lg flex items-center justify-center">
+                  <Package className="w-6 h-6 text-[#C85A00]" />
                 </div>
                 <div>
                   <p className="text-2xl font-bold text-[#1A1A1A]">{pedidos.length}</p>
@@ -115,17 +129,17 @@ export default function CuentaPage() {
                 </div>
               </div>
             </div>
-            <div className="bg-white border rounded-xl p-4">
+            <Link href="/cuenta/favoritos" className="bg-white border rounded-xl p-4 hover:shadow-md transition-shadow">
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
                   <Heart className="w-6 h-6 text-blue-600" />
                 </div>
                 <div>
-                  <p className="text-2xl font-bold text-[#1A1A1A]">0</p>
+                  <p className="text-2xl font-bold text-[#1A1A1A]">{favoritos.length}</p>
                   <p className="text-sm text-gray-500">Favoritos</p>
                 </div>
               </div>
-            </div>
+            </Link>
             <div className="bg-white border rounded-xl p-4">
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
@@ -143,14 +157,14 @@ export default function CuentaPage() {
           <div className="bg-white border rounded-xl p-6">
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-lg font-semibold text-[#1A1A1A]">Últimos Pedidos</h2>
-              <Link href="/cuenta/pedidos" className="text-[#FF6B00] hover:text-[#CC5500] text-sm">
+              <Link href="/cuenta/pedidos" className="text-[#C85A00] hover:text-[#A04800] text-sm">
                 Ver todos
               </Link>
             </div>
 
             {cargando ? (
               <div className="text-center py-8">
-                <div className="animate-spin w-6 h-6 border-4 border-[#FF6B00] border-t-transparent rounded-full mx-auto"></div>
+                <div className="animate-spin w-6 h-6 border-4 border-[#C85A00] border-t-transparent rounded-full mx-auto"></div>
               </div>
             ) : pedidos.length === 0 ? (
               <div className="text-center py-8 text-gray-500">
@@ -169,7 +183,7 @@ export default function CuentaPage() {
                       <p className="text-sm text-gray-500">{formatFecha(pedido.created_at)}</p>
                     </div>
                     <div className="text-right">
-                      <p className="font-bold text-[#FF6B00]">{formatPrecio(pedido.total)}</p>
+                      <p className="font-bold text-[#C85A00]">{formatPrecio(pedido.total)}</p>
                       <span className={`text-xs px-2 py-1 rounded-full ${
                         pedido.estado === 'entregado' ? 'bg-green-100 text-green-700' :
                         pedido.estado === 'enviado' ? 'bg-blue-100 text-blue-700' :

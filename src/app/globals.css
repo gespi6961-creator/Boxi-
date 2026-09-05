@@ -5,9 +5,9 @@
 /* ============================================= */
 
 :root {
-  /* Colores de marca */
-  --boxi-orange: #FF6B00;
-  --boxi-orange-dark: #CC5500;
+  /* Colores de marca - contraste WCAG 2.2 AA (4.5:1+) */
+  --boxi-orange: #C85A00;
+  --boxi-orange-dark: #A04800;
   --boxi-orange-light: #FFB380;
   --boxi-black: #1A1A1A;
   --boxi-dark-gray: #2D2D2D;
@@ -78,6 +78,15 @@ body {
   outline: 2px solid var(--boxi-orange);
   outline-offset: 2px;
 }
+
+/* Shortcut para colores de marca con buen contraste */
+.text-boxi { color: #C85A00; }
+.bg-boxi { background-color: #C85A00; }
+.border-boxi { border-color: #C85A00; }
+.ring-boxi { --tw-ring-color: #C85A00; }
+.hover\:text-boxi:hover { color: #C85A00; }
+.hover\:bg-boxi:hover { background-color: #C85A00; }
+.focus\:ring-boxi:focus { --tw-ring-color: #C85A00; }
 
 /* Animaciones */
 @keyframes fadeIn {

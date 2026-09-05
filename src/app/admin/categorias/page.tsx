@@ -3,12 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, Save, Upload, X, Plus, Trash2 } from 'lucide-react';
-import { createClient } from '@supabase/supabase-js';
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
+import { getSupabase } from '@/lib/supabase';
 
 interface Categoria {
   id: string;
@@ -48,6 +43,7 @@ export default function AdminCategoriasPage() {
   }, []);
 
   const cargarCategorias = async () => {
+    const supabase = getSupabase();
     const { data } = await supabase.from('categorias').select('*').order('orden');
     setCategorias(data || []);
     setCargando(false);
@@ -68,6 +64,7 @@ export default function AdminCategoriasPage() {
 
   const handleSave = async () => {
     setGuardando(true);
+    const supabase = getSupabase();
     const { error } = await supabase
       .from('categorias')
       .update({
@@ -125,7 +122,7 @@ export default function AdminCategoriasPage() {
         <label className="block text-xs font-medium text-gray-600 mb-1">{label}</label>
         <div
           className={`border-2 border-dashed rounded-lg p-3 text-center transition-colors ${
-            preview ? 'border-[#FF6B00] bg-orange-50' : 'border-gray-300 hover:border-[#FF6B00] cursor-pointer'
+            preview ? 'border-[#C85A00] bg-orange-50' : 'border-gray-300 hover:border-[#C85A00] cursor-pointer'
           }`}
           onClick={() => !preview && fileRef.current?.click()}
         >
@@ -166,14 +163,14 @@ export default function AdminCategoriasPage() {
   if (cargando) {
     return (
       <div className="max-w-5xl mx-auto px-4 py-8 text-center">
-        <div className="animate-spin w-8 h-8 border-4 border-[#FF6B00] border-t-transparent rounded-full mx-auto"></div>
+        <div className="animate-spin w-8 h-8 border-4 border-[#C85A00] border-t-transparent rounded-full mx-auto"></div>
       </div>
     );
   }
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-8">
-      <Link href="/admin" className="inline-flex items-center text-[#FF6B00] hover:text-[#CC5500] mb-6">
+      <Link href="/admin" className="inline-flex items-center text-[#C85A00] hover:text-[#A04800] mb-6">
         <ArrowLeft className="w-4 h-4 mr-1" />
         Volver al admin
       </Link>
@@ -192,7 +189,7 @@ export default function AdminCategoriasPage() {
                       type="text"
                       value={formulario.nombre}
                       onChange={(e) => setFormulario(prev => ({ ...prev, nombre: e.target.value }))}
-                      className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FF6B00]"
+                      className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C85A00]"
                     />
                   </div>
                   <div>
@@ -201,7 +198,7 @@ export default function AdminCategoriasPage() {
                       type="text"
                       value={formulario.slug}
                       onChange={(e) => setFormulario(prev => ({ ...prev, slug: e.target.value }))}
-                      className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FF6B00]"
+                      className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C85A00]"
                     />
                   </div>
                   <div className="sm:col-span-2">
@@ -210,7 +207,7 @@ export default function AdminCategoriasPage() {
                       type="text"
                       value={formulario.descripcion}
                       onChange={(e) => setFormulario(prev => ({ ...prev, descripcion: e.target.value }))}
-                      className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FF6B00]"
+                      className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C85A00]"
                     />
                   </div>
                 </div>
@@ -229,7 +226,7 @@ export default function AdminCategoriasPage() {
                     type="checkbox"
                     checked={formulario.activa}
                     onChange={(e) => setFormulario(prev => ({ ...prev, activa: e.target.checked }))}
-                    className="rounded border-gray-300 text-[#FF6B00] focus:ring-[#FF6B00]"
+                    className="rounded border-gray-300 text-[#C85A00] focus:ring-[#C85A00]"
                   />
                   <span className="text-sm text-gray-700">Activa</span>
                 </div>
@@ -244,7 +241,7 @@ export default function AdminCategoriasPage() {
                   <button
                     onClick={handleSave}
                     disabled={guardando}
-                    className="px-4 py-2 bg-[#FF6B00] text-white rounded-lg hover:bg-[#CC5500] disabled:opacity-50 inline-flex items-center gap-2"
+                    className="px-4 py-2 bg-[#C85A00] text-white rounded-lg hover:bg-[#A04800] disabled:opacity-50 inline-flex items-center gap-2"
                   >
                     <Save className="w-4 h-4" />
                     {guardando ? 'Guardando...' : 'Guardar'}

@@ -3,7 +3,7 @@
 import { useState, Suspense } from 'react';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { Mail, Lock, LogIn } from 'lucide-react';
+import { Mail, Lock, LogIn, Eye, EyeOff } from 'lucide-react';
 import { useAuth } from '@/lib/auth';
 import Button from '@/components/ui/Button';
 import Input from '@/components/ui/Input';
@@ -17,6 +17,7 @@ function LoginForm() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -26,7 +27,15 @@ function LoginForm() {
     const { error: signInError } = await signIn(email, password);
 
     if (signInError) {
-      setError('Email o contraseña incorrectos');
+      if (signInError.includes('rate') || signInError.includes('too many') || signInError.includes('For security')) {
+        setError('Demasiados intentos fallidos. Espera unos minutos antes de intentar de nuevo.');
+      } else if (signInError.includes('Email not confirmed') || signInError.includes('email not confirmed')) {
+        setError('Tu cuenta aun no ha sido confirmada. Revisa tu correo electronico para activarla.');
+      } else if (signInError.includes('Invalid login credentials') || signInError.includes('invalid')) {
+        setError('Email o contrasena incorrectos. Verifica tus datos.');
+      } else {
+        setError(signInError);
+      }
       setLoading(false);
     } else {
       window.location.href = redirectTo;
@@ -58,37 +67,44 @@ function LoginForm() {
         <div className="relative">
           <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
           <Input
-            label="Contraseña"
-            type="password"
+            label="Contrasena"
+            type={showPassword ? 'text' : 'password'}
             placeholder="••••••••"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-            className="pl-10"
+            className="pl-10 pr-10"
           />
+          <button
+            type="button"
+            onClick={() => setShowPassword(!showPassword)}
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+          >
+            {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+          </button>
         </div>
 
         <div className="flex items-center justify-between text-sm">
           <label className="flex items-center">
-            <input type="checkbox" className="rounded border-gray-300 text-[#FF6B00] focus:ring-[#FF6B00]" />
+            <input type="checkbox" className="rounded border-gray-300 text-[#C85A00] focus:ring-[#C85A00]" />
             <span className="ml-2 text-gray-600">Recordarme</span>
           </label>
-          <Link href="#" className="text-[#FF6B00] hover:text-[#CC5500]">
-            ¿Olvidaste tu contraseña?
+          <Link href="/auth/recuperar-contrasena" className="text-[#C85A00] hover:text-[#A04800]">
+            Olvidaste tu contrasena?
           </Link>
         </div>
 
         <Button type="submit" loading={loading} className="w-full" size="lg">
           <LogIn className="w-5 h-5 mr-2" />
-          Iniciar Sesión
+          Iniciar Sesion
         </Button>
       </form>
 
       <div className="mt-6 text-center">
         <p className="text-gray-600">
-          ¿No tienes cuenta?{' '}
-          <Link href="/auth/registro" className="text-[#FF6B00] hover:text-[#CC5500] font-medium">
-            Regístrate
+          No tienes cuenta?{' '}
+          <Link href="/auth/registro" className="text-[#C85A00] hover:text-[#A04800] font-medium">
+            Registrate
           </Link>
         </p>
       </div>
@@ -100,21 +116,19 @@ export default function LoginPage() {
   return (
     <div className="min-h-[80vh] flex items-center justify-center px-4 py-12">
       <div className="w-full max-w-md">
-        {/* Logo */}
         <div className="text-center mb-8">
           <Link href="/" className="inline-flex items-center space-x-2">
-            <div className="w-12 h-12 bg-[#FF6B00] rounded-lg flex items-center justify-center">
+            <div className="w-12 h-12 bg-[#C85A00] rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-2xl">B</span>
             </div>
           </Link>
-          <h1 className="text-2xl font-bold text-[#1A1A1A] mt-4">Iniciar Sesión</h1>
-          <p className="text-gray-600 mt-1">Accede a tu cuenta de BOXI</p>
+          <h1 className="text-2xl font-bold text-[#1A1A1A] mt-4">Iniciar Sesion</h1>
+          <p className="text-gray-600 mt-1">Accede a tu cuenta de BoxiTec</p>
         </div>
 
-        {/* Formulario */}
         <Suspense fallback={
           <div className="bg-white border rounded-xl p-6 text-center">
-            <div className="animate-spin w-8 h-8 border-4 border-[#FF6B00] border-t-transparent rounded-full mx-auto"></div>
+            <div className="animate-spin w-8 h-8 border-4 border-[#C85A00] border-t-transparent rounded-full mx-auto"></div>
           </div>
         }>
           <LoginForm />

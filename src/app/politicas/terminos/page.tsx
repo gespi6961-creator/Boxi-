@@ -213,7 +213,8 @@ export default function TerminosCondiciones() {
             11. Propiedad Intelectual
           </h2>
           <p>
-            Todo el contenido del Sitio, incluyendo但不限于 textos, imágenes,
+            Todo el contenido del Sitio, incluyendo, sin limitarse a, textos,
+            imágenes,
             gráficos, logotipos, iconos, software y código fuente, es propiedad de
             BOXI TECNOLOGÍA SA DE CV o de sus proveedores y está protegido por
             las leyes de propiedad intelectual. Queda prohibida su reproducción,

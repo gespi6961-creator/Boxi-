@@ -51,7 +51,7 @@ const articulos: Record<string, ArticuloCompleto> = {
       '- Alertas de ritmo cardiaco irregular',
       '## Paso 3: Compatibilidad con tu celular',
       'Esta es una regla de oro que mucha gente olvida:',
-      '- **iPhone:** Busca Apple Watch o smartwatch que兼容 con iOS',
+      '- **iPhone:** Busca Apple Watch o smartwatch que sea compatible con iOS',
       '- **Android:** La mayoria de smartwatches funcionan, pero algunos como Samsung Galaxy Watch son mejores con Samsung',
       '## Paso 4: Tamaño y comodidad',
       'El smartwatch pasara horas en tu muñeca, asi que la comodidad es clave:',

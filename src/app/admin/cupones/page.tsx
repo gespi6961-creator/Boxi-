@@ -115,7 +115,7 @@ export default function AdminCuponesPage() {
                 name="tipo"
                 value={formulario.tipo}
                 onChange={handleInputChange}
-                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C85A00]"
+                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FF6B00]"
               >
                 <option value="porcentaje">Porcentaje (%)</option>
                 <option value="fijo">Monto fijo ($)</option>
@@ -171,7 +171,7 @@ export default function AdminCuponesPage() {
       <div className="bg-white border rounded-xl overflow-hidden">
         {cargando ? (
           <div className="text-center py-12">
-            <div className="animate-spin w-8 h-8 border-4 border-[#C85A00] border-t-transparent rounded-full mx-auto"></div>
+            <div className="animate-spin w-8 h-8 border-4 border-[#FF6B00] border-t-transparent rounded-full mx-auto"></div>
           </div>
         ) : cupones.length === 0 ? (
           <div className="text-center py-12 text-gray-500">No hay cupones creados</div>
@@ -193,7 +193,7 @@ export default function AdminCuponesPage() {
                 {cupones.map((cupon) => (
                   <tr key={cupon.id} className="hover:bg-gray-50">
                     <td className="px-6 py-4">
-                      <span className="font-mono font-bold text-[#C85A00]">{cupon.codigo}</span>
+                      <span className="font-mono font-bold text-[#FF6B00]">{cupon.codigo}</span>
                     </td>
                     <td className="px-6 py-4 text-gray-600 capitalize">{cupon.tipo}</td>
                     <td className="px-6 py-4 font-medium">
@@ -212,7 +212,7 @@ export default function AdminCuponesPage() {
                       <div className="flex items-center justify-end gap-2">
                         <button
                           onClick={() => editarCupon(cupon)}
-                          className="p-2 text-gray-400 hover:text-[#C85A00] hover:bg-orange-50 rounded-lg"
+                          className="p-2 text-gray-400 hover:text-[#FF6B00] hover:bg-orange-50 rounded-lg"
                         >
                           <Edit className="w-4 h-4" />
                         </button>

@@ -64,10 +64,10 @@ export default function Navbar() {
                   placeholder="Buscar productos..."
                   value={busqueda}
                   onChange={(e) => setBusqueda(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C85A00] focus:border-transparent"
+                  className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FF6B00] focus:border-transparent"
                 />
                 <button type="submit" aria-label="Buscar" className="absolute left-3 top-1/2 -translate-y-1/2">
-                  <Search className="w-5 h-5 text-gray-400 hover:text-[#C85A00]" />
+                  <Search className="w-5 h-5 text-gray-400 hover:text-[#FF6B00]" />
                 </button>
               </form>
             </div>
@@ -77,7 +77,7 @@ export default function Navbar() {
               <div className="relative">
                 <button
                   onClick={() => setCategoriasAbiertas(!categoriasAbiertas)}
-                  className="flex items-center space-x-1 text-gray-700 hover:text-[#C85A00] transition-colors"
+                  className="flex items-center space-x-1 text-gray-700 hover:text-[#FF6B00] transition-colors"
                 >
                   <span>Categorias</span>
                   <ChevronDown className={cn("w-4 h-4 transition-transform", categoriasAbiertas && "rotate-180")} />
@@ -89,7 +89,7 @@ export default function Navbar() {
                       <Link
                         key={cat.slug}
                         href={`/catalogo?categoria=${cat.slug}`}
-                        className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#C85A00]"
+                        className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#FF6B00]"
                         onClick={() => setCategoriasAbiertas(false)}
                       >
                         {cat.nombre}
@@ -99,22 +99,22 @@ export default function Navbar() {
                 )}
               </div>
 
-            <Link href="/catalogo" className="text-gray-700 hover:text-[#C85A00] transition-colors">
+            <Link href="/catalogo" className="text-gray-700 hover:text-[#FF6B00] transition-colors">
               Catalogo
             </Link>
 
-            <Link href="/blog" className="text-gray-700 hover:text-[#C85A00] transition-colors">
+            <Link href="/blog" className="text-gray-700 hover:text-[#FF6B00] transition-colors">
               Blog
             </Link>
 
-              <Link href="/cuenta" aria-label="Mi cuenta" className="text-gray-700 hover:text-[#C85A00] transition-colors">
+              <Link href="/cuenta" aria-label="Mi cuenta" className="text-gray-700 hover:text-[#FF6B00] transition-colors">
                 <User className="w-6 h-6" />
               </Link>
 
-              <Link href="/carrito" aria-label="Ver carrito" className="relative text-gray-700 hover:text-[#C85A00] transition-colors">
+              <Link href="/carrito" aria-label="Ver carrito" className="relative text-gray-700 hover:text-[#FF6B00] transition-colors">
                 <ShoppingCart className="w-6 h-6" />
                 {totalItems > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-[#C85A00] text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                  <span className="absolute -top-2 -right-2 bg-[#FF6B00] text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
                     {totalItems}
                   </span>
                 )}
@@ -139,16 +139,16 @@ export default function Navbar() {
               <button
                 onClick={() => setBusquedaAbierta(!busquedaAbierta)}
                 aria-label="Buscar"
-                className="p-2 text-gray-700 hover:text-[#C85A00] transition-colors"
+                className="p-2 text-gray-700 hover:text-[#FF6B00] transition-colors"
               >
                 <Search className="w-5 h-5" />
               </button>
 
               {/* Carrito */}
-              <Link href="/carrito" aria-label="Ver carrito" className="relative p-2 text-gray-700 hover:text-[#C85A00] transition-colors">
+              <Link href="/carrito" aria-label="Ver carrito" className="relative p-2 text-gray-700 hover:text-[#FF6B00] transition-colors">
                 <ShoppingCart className="w-5 h-5" />
                 {totalItems > 0 && (
-                  <span className="absolute -top-0.5 -right-0.5 bg-[#C85A00] text-white text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center">
+                  <span className="absolute -top-0.5 -right-0.5 bg-[#FF6B00] text-white text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center">
                     {totalItems > 9 ? '9+' : totalItems}
                   </span>
                 )}
@@ -158,7 +158,7 @@ export default function Navbar() {
               <button
                 onClick={() => setMenuAbierto(!menuAbierto)}
                 aria-label={menuAbierto ? 'Cerrar menú' : 'Abrir menú'}
-                className="p-2 text-gray-700 hover:text-[#C85A00] transition-colors"
+                className="p-2 text-gray-700 hover:text-[#FF6B00] transition-colors"
               >
                 {menuAbierto ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
               </button>
@@ -175,7 +175,7 @@ export default function Navbar() {
                 value={busqueda}
                 onChange={(e) => setBusqueda(e.target.value)}
                 autoFocus
-                className="w-full pl-10 pr-10 py-2.5 border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#C85A00] bg-gray-50"
+                className="w-full pl-10 pr-10 py-2.5 border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#FF6B00] bg-gray-50"
               />
               <button
                 type="button"
@@ -193,7 +193,7 @@ export default function Navbar() {
         <div className="border-t px-4 py-2">
           <button
             onClick={() => setMenuAbierto(!menuAbierto)}
-            className="w-full flex items-center justify-center gap-2 py-2 text-sm font-medium text-gray-700 hover:text-[#C85A00] transition-colors"
+            className="w-full flex items-center justify-center gap-2 py-2 text-sm font-medium text-gray-700 hover:text-[#FF6B00] transition-colors"
           >
             <Grid3X3 className="w-4 h-4" />
             <span>Ver categorias</span>
@@ -212,7 +212,7 @@ export default function Navbar() {
                   <Link
                     key={cat.slug}
                     href={`/catalogo?categoria=${cat.slug}`}
-                    className="flex items-center gap-2 px-3 py-2.5 bg-gray-50 rounded-lg text-sm text-gray-700 hover:bg-[#C85A00] hover:text-white transition-colors"
+                    className="flex items-center gap-2 px-3 py-2.5 bg-gray-50 rounded-lg text-sm text-gray-700 hover:bg-[#FF6B00] hover:text-white transition-colors"
                     onClick={() => setMenuAbierto(false)}
                   >
                     {cat.nombre}
@@ -225,7 +225,7 @@ export default function Navbar() {
             <div className="px-4 py-3">
               <Link
                 href="/catalogo"
-                className="flex items-center gap-3 py-2.5 text-gray-700 hover:text-[#C85A00]"
+                className="flex items-center gap-3 py-2.5 text-gray-700 hover:text-[#FF6B00]"
                 onClick={() => setMenuAbierto(false)}
               >
                 <Grid3X3 className="w-5 h-5" />
@@ -233,14 +233,14 @@ export default function Navbar() {
               </Link>
               <Link
                 href="/blog"
-                className="flex items-center gap-3 py-2.5 text-gray-700 hover:text-[#C85A00]"
+                className="flex items-center gap-3 py-2.5 text-gray-700 hover:text-[#FF6B00]"
                 onClick={() => setMenuAbierto(false)}
               >
                 📝 Blog
               </Link>
               <Link
                 href="/cuenta"
-                className="flex items-center gap-3 py-2.5 text-gray-700 hover:text-[#C85A00]"
+                className="flex items-center gap-3 py-2.5 text-gray-700 hover:text-[#FF6B00]"
                 onClick={() => setMenuAbierto(false)}
               >
                 <User className="w-5 h-5" />
@@ -248,7 +248,7 @@ export default function Navbar() {
               </Link>
               <Link
                 href="/cuenta/favoritos"
-                className="flex items-center gap-3 py-2.5 text-gray-700 hover:text-[#C85A00]"
+                className="flex items-center gap-3 py-2.5 text-gray-700 hover:text-[#FF6B00]"
                 onClick={() => setMenuAbierto(false)}
               >
                 <Heart className="w-5 h-5" />
@@ -256,7 +256,7 @@ export default function Navbar() {
               </Link>
               <a
                 href="tel:+526651423910"
-                className="flex items-center gap-3 py-2.5 text-gray-700 hover:text-[#C85A00]"
+                className="flex items-center gap-3 py-2.5 text-gray-700 hover:text-[#FF6B00]"
                 onClick={() => setMenuAbierto(false)}
               >
                 <Phone className="w-5 h-5" />
@@ -274,7 +274,7 @@ export default function Navbar() {
             href="/"
             className={cn(
               "flex flex-col items-center py-2 px-1 rounded-lg transition-colors",
-              pathname === '/' ? "text-[#C85A00]" : "text-gray-500"
+              pathname === '/' ? "text-[#FF6B00]" : "text-gray-500"
             )}
           >
             <Home className="w-5 h-5" />
@@ -285,7 +285,7 @@ export default function Navbar() {
             href="/catalogo"
             className={cn(
               "flex flex-col items-center py-2 px-1 rounded-lg transition-colors",
-              pathname === '/catalogo' ? "text-[#C85A00]" : "text-gray-500"
+              pathname === '/catalogo' ? "text-[#FF6B00]" : "text-gray-500"
             )}
           >
             <Grid3X3 className="w-5 h-5" />
@@ -296,13 +296,13 @@ export default function Navbar() {
             href="/carrito"
             className={cn(
               "flex flex-col items-center py-2 px-1 rounded-lg transition-colors relative",
-              pathname === '/carrito' ? "text-[#C85A00]" : "text-gray-500"
+              pathname === '/carrito' ? "text-[#FF6B00]" : "text-gray-500"
             )}
           >
             <div className="relative">
               <ShoppingCart className="w-5 h-5" />
               {totalItems > 0 && (
-                <span className="absolute -top-1.5 -right-2 bg-[#C85A00] text-white text-[9px] font-bold rounded-full w-4 h-4 flex items-center justify-center">
+                <span className="absolute -top-1.5 -right-2 bg-[#FF6B00] text-white text-[9px] font-bold rounded-full w-4 h-4 flex items-center justify-center">
                   {totalItems > 9 ? '9+' : totalItems}
                 </span>
               )}
@@ -314,7 +314,7 @@ export default function Navbar() {
             href="/cuenta/favoritos"
             className={cn(
               "flex flex-col items-center py-2 px-1 rounded-lg transition-colors",
-              pathname === '/cuenta/favoritos' ? "text-[#C85A00]" : "text-gray-500"
+              pathname === '/cuenta/favoritos' ? "text-[#FF6B00]" : "text-gray-500"
             )}
           >
             <Heart className="w-5 h-5" />
@@ -325,7 +325,7 @@ export default function Navbar() {
             href="/cuenta"
             className={cn(
               "flex flex-col items-center py-2 px-1 rounded-lg transition-colors",
-              pathname === '/cuenta' ? "text-[#C85A00]" : "text-gray-500"
+              pathname === '/cuenta' ? "text-[#FF6B00]" : "text-gray-500"
             )}
           >
             <User className="w-5 h-5" />

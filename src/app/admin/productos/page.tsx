@@ -62,7 +62,7 @@ export default function AdminProductosPage() {
             placeholder="Buscar productos..."
             value={busqueda}
             onChange={(e) => setBusqueda(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C85A00]"
+            className="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FF6B00]"
           />
         </div>
       </div>
@@ -71,7 +71,7 @@ export default function AdminProductosPage() {
       <div className="bg-white border rounded-xl overflow-hidden">
         {cargando ? (
           <div className="text-center py-12">
-            <div className="animate-spin w-8 h-8 border-4 border-[#C85A00] border-t-transparent rounded-full mx-auto"></div>
+            <div className="animate-spin w-8 h-8 border-4 border-[#FF6B00] border-t-transparent rounded-full mx-auto"></div>
           </div>
         ) : productosFiltrados.length === 0 ? (
           <div className="text-center py-12 text-gray-500">
@@ -114,7 +114,7 @@ export default function AdminProductosPage() {
                     <td className="px-6 py-4 font-medium text-[#1A1A1A]">
                       {formatPrecio(producto.precio_base)}
                     </td>
-                    <td className="px-6 py-4 text-[#C85A00] font-medium">
+                    <td className="px-6 py-4 text-[#FF6B00] font-medium">
                       {producto.precio_oferta ? formatPrecio(producto.precio_oferta) : '-'}
                     </td>
                     <td className="px-6 py-4">
@@ -134,7 +134,7 @@ export default function AdminProductosPage() {
                         </Link>
                         <Link
                           href={`/admin/productos/${producto.id}`}
-                          className="p-2 text-gray-400 hover:text-[#C85A00] hover:bg-orange-50 rounded-lg"
+                          className="p-2 text-gray-400 hover:text-[#FF6B00] hover:bg-orange-50 rounded-lg"
                         >
                           <Edit className="w-4 h-4" />
                         </Link>

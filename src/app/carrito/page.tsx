@@ -18,7 +18,7 @@ export default function CarritoPage() {
   if (!isLoaded) {
     return (
       <div className="max-w-7xl mx-auto px-4 py-16 text-center">
-        <div className="animate-spin w-8 h-8 border-4 border-[#C85A00] border-t-transparent rounded-full mx-auto"></div>
+        <div className="animate-spin w-8 h-8 border-4 border-[#FF6B00] border-t-transparent rounded-full mx-auto"></div>
         <p className="mt-4 text-gray-600">Cargando carrito...</p>
       </div>
     );
@@ -73,10 +73,10 @@ export default function CarritoPage() {
                 {/* Info */}
                 <div className="flex-1">
                   <Link href={`/producto/${item.producto.id}`}>
-                    <h3 className="font-semibold text-[#1A1A1A] hover:text-[#C85A00] transition-colors">{item.producto.nombre}</h3>
+                    <h3 className="font-semibold text-[#1A1A1A] hover:text-[#FF6B00] transition-colors">{item.producto.nombre}</h3>
                   </Link>
                   <p className="text-sm text-gray-500">{item.variante.nombre}</p>
-                  <p className="text-lg font-bold text-[#C85A00] mt-2">
+                  <p className="text-lg font-bold text-[#FF6B00] mt-2">
                     {formatPrecio(precio)}
                   </p>
                 </div>
@@ -115,7 +115,7 @@ export default function CarritoPage() {
 
           <Link
             href="/catalogo"
-            className="inline-flex items-center text-[#C85A00] hover:text-[#A04800]"
+            className="inline-flex items-center text-[#FF6B00] hover:text-[#CC5500]"
           >
             <ArrowLeft className="w-4 h-4 mr-1" />
             Seguir comprando
@@ -139,7 +139,7 @@ export default function CarritoPage() {
                   value={codigoCupon}
                   onChange={(e) => setCodigoCupon(e.target.value)}
                   disabled={!!cupon}
-                  className="flex-1 px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C85A00] disabled:bg-gray-100"
+                  className="flex-1 px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FF6B00] disabled:bg-gray-100"
                 />
                 <Button
                   variant="outline"

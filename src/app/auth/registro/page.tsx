@@ -71,7 +71,7 @@ export default function RegistroPage() {
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <Link href="/" className="inline-flex items-center space-x-2">
-            <div className="w-12 h-12 bg-[#C85A00] rounded-lg flex items-center justify-center">
+            <div className="w-12 h-12 bg-[#FF6B00] rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-2xl">B</span>
             </div>
           </Link>
@@ -182,12 +182,12 @@ export default function RegistroPage() {
             </div>
 
             <label className="flex items-start">
-              <input type="checkbox" required className="rounded border-gray-300 text-[#C85A00] focus:ring-[#C85A00] mt-1" />
+              <input type="checkbox" required className="rounded border-gray-300 text-[#FF6B00] focus:ring-[#FF6B00] mt-1" />
               <span className="ml-2 text-sm text-gray-600">
                 Acepto los{' '}
-                <Link href="#" className="text-[#C85A00] hover:underline">Terminos y Condiciones</Link>
+                <Link href="#" className="text-[#FF6B00] hover:underline">Terminos y Condiciones</Link>
                 {' '}y la{' '}
-                <Link href="#" className="text-[#C85A00] hover:underline">Politica de Privacidad</Link>
+                <Link href="#" className="text-[#FF6B00] hover:underline">Politica de Privacidad</Link>
               </span>
             </label>
 
@@ -200,7 +200,7 @@ export default function RegistroPage() {
           <div className="mt-6 text-center">
             <p className="text-gray-600">
               Ya tienes cuenta?{' '}
-              <Link href="/auth/login" className="text-[#C85A00] hover:text-[#A04800] font-medium">
+              <Link href="/auth/login" className="text-[#FF6B00] hover:text-[#CC5500] font-medium">
                 Inicia sesion
               </Link>
             </p>

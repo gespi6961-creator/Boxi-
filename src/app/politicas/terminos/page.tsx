@@ -1,5 +1,3 @@
-'use client';
-
 import Link from 'next/link';
 
 export const metadata = {
@@ -13,14 +11,14 @@ export default function TerminosCondiciones() {
     <div className="bg-white rounded-lg shadow-md p-6 sm:p-8 lg:p-10">
       {/* Breadcrumb */}
       <nav className="mb-6 text-sm text-gray-500">
-        <Link href="/" className="hover:underline" style={{ color: '#C85A00' }}>
+        <Link href="/" className="hover:underline" style={{ color: '#FF6B00' }}>
           Inicio
         </Link>
         <span className="mx-2">/</span>
         <Link
           href="/politicas"
           className="hover:underline"
-          style={{ color: '#C85A00' }}
+          style={{ color: '#FF6B00' }}
         >
           Políticas
         </Link>
@@ -30,7 +28,7 @@ export default function TerminosCondiciones() {
         </span>
       </nav>
 
-      <h1 className="text-3xl font-bold mb-2" style={{ color: '#C85A00' }}>
+      <h1 className="text-3xl font-bold mb-2" style={{ color: '#FF6B00' }}>
         Términos y Condiciones
       </h1>
       <p className="text-sm text-gray-500 mb-8">
@@ -39,7 +37,7 @@ export default function TerminosCondiciones() {
 
       <div className="prose prose-orange max-w-none space-y-6 text-gray-700 leading-relaxed">
         <section>
-          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#C85A00' }}>
+          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#FF6B00' }}>
             1. Aceptación de los Términos
           </h2>
           <p>
@@ -53,7 +51,7 @@ export default function TerminosCondiciones() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#C85A00' }}>
+          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#FF6B00' }}>
             2. Información del Titular
           </h2>
           <ul className="list-disc pl-6 space-y-1">
@@ -61,8 +59,8 @@ export default function TerminosCondiciones() {
               <strong>Razón social:</strong> BOXI TECNOLOGÍA SA DE CV
             </li>
             <li>
-              <strong>Domicilio:</strong> Swapmeet Encinos, Encinos No.800,
-              Local 327, Tecate, Baja California, C.P. 21480
+              <strong>Domicilio:</strong> Calle San Ignacio No. 105,
+              Fraccionamiento Santa Anita, Tecate, Baja California, C.P. 21453
             </li>
             <li>
               <strong>Teléfono:</strong> +52 665 142 3910
@@ -74,7 +72,7 @@ export default function TerminosCondiciones() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#C85A00' }}>
+          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#FF6B00' }}>
             3. Objeto
           </h2>
           <p>
@@ -86,7 +84,7 @@ export default function TerminosCondiciones() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#C85A00' }}>
+          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#FF6B00' }}>
             4. Registro de Usuario
           </h2>
           <p>
@@ -98,7 +96,7 @@ export default function TerminosCondiciones() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#C85A00' }}>
+          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#FF6B00' }}>
             5. Productos y Precios
           </h2>
           <p>
@@ -117,7 +115,7 @@ export default function TerminosCondiciones() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#C85A00' }}>
+          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#FF6B00' }}>
             6. Proceso de Compra
           </h2>
           <p>
@@ -138,7 +136,7 @@ export default function TerminosCondiciones() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#C85A00' }}>
+          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#FF6B00' }}>
             7. Métodos de Pago
           </h2>
           <p>Aceptamos los siguientes métodos de pago:</p>
@@ -155,7 +153,7 @@ export default function TerminosCondiciones() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#C85A00' }}>
+          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#FF6B00' }}>
             8. Envíos
           </h2>
           <p>
@@ -165,7 +163,7 @@ export default function TerminosCondiciones() {
             <Link
               href="/politicas/envio"
               className="font-semibold hover:underline"
-              style={{ color: '#C85A00' }}
+              style={{ color: '#FF6B00' }}
             >
               Política de Envío
             </Link>
@@ -174,7 +172,7 @@ export default function TerminosCondiciones() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#C85A00' }}>
+          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#FF6B00' }}>
             9. Devoluciones y Reembolsos
           </h2>
           <p>
@@ -184,7 +182,7 @@ export default function TerminosCondiciones() {
             <Link
               href="/politicas/devoluciones"
               className="font-semibold hover:underline"
-              style={{ color: '#C85A00' }}
+              style={{ color: '#FF6B00' }}
             >
               Política de Devoluciones
             </Link>
@@ -193,7 +191,7 @@ export default function TerminosCondiciones() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#C85A00' }}>
+          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#FF6B00' }}>
             10. Garantía
           </h2>
           <p>
@@ -202,7 +200,7 @@ export default function TerminosCondiciones() {
             <Link
               href="/politicas/garantia"
               className="font-semibold hover:underline"
-              style={{ color: '#C85A00' }}
+              style={{ color: '#FF6B00' }}
             >
               Política de Garantía
             </Link>{' '}
@@ -211,7 +209,7 @@ export default function TerminosCondiciones() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#C85A00' }}>
+          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#FF6B00' }}>
             11. Propiedad Intelectual
           </h2>
           <p>
@@ -224,7 +222,7 @@ export default function TerminosCondiciones() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#C85A00' }}>
+          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#FF6B00' }}>
             12. Limitación de Responsabilidad
           </h2>
           <p>
@@ -236,7 +234,7 @@ export default function TerminosCondiciones() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#C85A00' }}>
+          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#FF6B00' }}>
             13. Legislación Aplicable y Jurisdicción
           </h2>
           <p>
@@ -248,7 +246,7 @@ export default function TerminosCondiciones() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#C85A00' }}>
+          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#FF6B00' }}>
             14. Modificaciones
           </h2>
           <p>
@@ -261,7 +259,7 @@ export default function TerminosCondiciones() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#C85A00' }}>
+          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#FF6B00' }}>
             15. Contacto
           </h2>
           <p>
@@ -271,7 +269,7 @@ export default function TerminosCondiciones() {
           <ul className="list-disc pl-6 mt-2 space-y-1">
             <li>Correo electrónico: boxitec.tech@gmail.com</li>
             <li>Teléfono: +52 665 142 3910</li>
-            <li>Dirección: Swapmeet Encinos, Encinos No.800, Local 327, Tecate, Baja California, C.P. 21480</li>
+            <li>Dirección: Calle San Ignacio No. 105, Fraccionamiento Santa Anita, Tecate, Baja California, C.P. 21453</li>
           </ul>
         </section>
       </div>
@@ -281,7 +279,7 @@ export default function TerminosCondiciones() {
         <Link
           href="/politicas"
           className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-white font-semibold transition-colors hover:opacity-90"
-          style={{ backgroundColor: '#C85A00' }}
+          style={{ backgroundColor: '#FF6B00' }}
         >
           ← Volver a Políticas
         </Link>

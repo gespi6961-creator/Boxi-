@@ -96,11 +96,11 @@ function TarjetaArticulo({ articulo }: { articulo: Articulo }) {
     >
       {/* Imagen */}
       <div className="relative aspect-[16/10] overflow-hidden bg-gray-100">
-        <div className="w-full h-full bg-gradient-to-br from-[#C85A00]/20 to-[#C85A00]/5 flex items-center justify-center">
+        <div className="w-full h-full bg-gradient-to-br from-[#FF6B00]/20 to-[#FF6B00]/5 flex items-center justify-center">
           <span className="text-6xl opacity-30">📝</span>
         </div>
         <div className="absolute top-3 left-3">
-          <span className="bg-[#C85A00] text-white text-xs font-bold px-3 py-1 rounded-full">
+          <span className="bg-[#FF6B00] text-white text-xs font-bold px-3 py-1 rounded-full">
             {articulo.categoria}
           </span>
         </div>
@@ -119,7 +119,7 @@ function TarjetaArticulo({ articulo }: { articulo: Articulo }) {
           </span>
         </div>
 
-        <h3 className="font-bold text-[#1A1A1A] text-lg line-clamp-2 group-hover:text-[#C85A00] transition-colors">
+        <h3 className="font-bold text-[#1A1A1A] text-lg line-clamp-2 group-hover:text-[#FF6B00] transition-colors">
           {articulo.titulo}
         </h3>
 
@@ -127,7 +127,7 @@ function TarjetaArticulo({ articulo }: { articulo: Articulo }) {
           {articulo.resumen}
         </p>
 
-        <div className="mt-4 flex items-center text-[#C85A00] font-medium text-sm group-hover:gap-2 transition-all">
+        <div className="mt-4 flex items-center text-[#FF6B00] font-medium text-sm group-hover:gap-2 transition-all">
           Leer mas
           <ArrowRight className="w-4 h-4 ml-1" />
         </div>
@@ -143,7 +143,7 @@ export default function BlogPage() {
       <div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 py-12">
           <h1 className="text-4xl font-bold text-[#1A1A1A] text-center">
-            Blog de <span className="text-[#C85A00]">BoxiTec</span>
+            Blog de <span className="text-[#FF6B00]">BoxiTec</span>
           </h1>
           <p className="text-gray-600 text-center mt-3 max-w-2xl mx-auto">
             Consejos, guias y novedades sobre tecnologia, gadgets y soluciones inteligentes para tu negocio y hogar.
@@ -183,9 +183,9 @@ export default function BlogPage() {
               la opcion de pago contra entrega para tu tranquilidad.
             </p>
             <p>
-              Visita nuestro <Link href="/catalogo" className="text-[#C85A00] hover:underline">catalogo</Link> y 
+              Visita nuestro <Link href="/catalogo" className="text-[#FF6B00] hover:underline">catalogo</Link> y 
               descubre por que somos la mejor opcion en tecnologia accesible. Si tienes preguntas, 
-              contactanos al <a href="tel:+526651423910" className="text-[#C85A00] hover:underline">+52 665 142 3910</a> o 
+              contactanos al <a href="tel:+526651423910" className="text-[#FF6B00] hover:underline">+52 665 142 3910</a> o 
               por WhatsApp.
             </p>
           </div>

@@ -86,10 +86,10 @@ function LoginForm() {
 
         <div className="flex items-center justify-between text-sm">
           <label className="flex items-center">
-            <input type="checkbox" className="rounded border-gray-300 text-[#C85A00] focus:ring-[#C85A00]" />
+            <input type="checkbox" className="rounded border-gray-300 text-[#FF6B00] focus:ring-[#FF6B00]" />
             <span className="ml-2 text-gray-600">Recordarme</span>
           </label>
-          <Link href="/auth/recuperar-contrasena" className="text-[#C85A00] hover:text-[#A04800]">
+          <Link href="/auth/recuperar-contrasena" className="text-[#FF6B00] hover:text-[#CC5500]">
             Olvidaste tu contrasena?
           </Link>
         </div>
@@ -103,7 +103,7 @@ function LoginForm() {
       <div className="mt-6 text-center">
         <p className="text-gray-600">
           No tienes cuenta?{' '}
-          <Link href="/auth/registro" className="text-[#C85A00] hover:text-[#A04800] font-medium">
+          <Link href="/auth/registro" className="text-[#FF6B00] hover:text-[#CC5500] font-medium">
             Registrate
           </Link>
         </p>
@@ -118,7 +118,7 @@ export default function LoginPage() {
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <Link href="/" className="inline-flex items-center space-x-2">
-            <div className="w-12 h-12 bg-[#C85A00] rounded-lg flex items-center justify-center">
+            <div className="w-12 h-12 bg-[#FF6B00] rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-2xl">B</span>
             </div>
           </Link>
@@ -128,7 +128,7 @@ export default function LoginPage() {
 
         <Suspense fallback={
           <div className="bg-white border rounded-xl p-6 text-center">
-            <div className="animate-spin w-8 h-8 border-4 border-[#C85A00] border-t-transparent rounded-full mx-auto"></div>
+            <div className="animate-spin w-8 h-8 border-4 border-[#FF6B00] border-t-transparent rounded-full mx-auto"></div>
           </div>
         }>
           <LoginForm />

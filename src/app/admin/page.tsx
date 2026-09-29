@@ -51,7 +51,7 @@ export default function AdminDashboard() {
   const statCards = [
     { label: 'Productos', value: stats.totalProductos, icon: Package, color: 'bg-blue-500' },
     { label: 'Pedidos', value: stats.totalPedidos, icon: ShoppingCart, color: 'bg-green-500' },
-    { label: 'Ingresos', value: formatPrecio(stats.ingresosTotales), icon: DollarSign, color: 'bg-[#C85A00]' },
+    { label: 'Ingresos', value: formatPrecio(stats.ingresosTotales), icon: DollarSign, color: 'bg-[#FF6B00]' },
     { label: 'Pendientes', value: stats.pedidosPendientes, icon: TrendingUp, color: 'bg-yellow-500' },
   ];
 
@@ -64,7 +64,7 @@ export default function AdminDashboard() {
         </div>
         <Link
           href="/admin/productos/nuevo"
-          className="bg-[#C85A00] text-white px-4 py-2 rounded-lg hover:bg-[#A04800] transition-colors"
+          className="bg-[#FF6B00] text-white px-4 py-2 rounded-lg hover:bg-[#CC5500] transition-colors"
         >
           + Nuevo Producto
         </Link>
@@ -92,14 +92,14 @@ export default function AdminDashboard() {
         <div className="bg-white border rounded-xl p-6">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg font-semibold text-[#1A1A1A]">Pedidos Recientes</h2>
-            <Link href="/admin/pedidos" className="text-[#C85A00] hover:text-[#A04800] text-sm">
+            <Link href="/admin/pedidos" className="text-[#FF6B00] hover:text-[#CC5500] text-sm">
               Ver todos
             </Link>
           </div>
 
           {cargando ? (
             <div className="text-center py-8">
-              <div className="animate-spin w-6 h-6 border-4 border-[#C85A00] border-t-transparent rounded-full mx-auto"></div>
+              <div className="animate-spin w-6 h-6 border-4 border-[#FF6B00] border-t-transparent rounded-full mx-auto"></div>
             </div>
           ) : pedidosRecientes.length === 0 ? (
             <p className="text-center py-8 text-gray-500">No hay pedidos aún</p>
@@ -112,7 +112,7 @@ export default function AdminDashboard() {
                     <p className="text-sm text-gray-500">{formatFecha(pedido.created_at)}</p>
                   </div>
                   <div className="text-right">
-                    <p className="font-bold text-[#C85A00]">{formatPrecio(pedido.total)}</p>
+                    <p className="font-bold text-[#FF6B00]">{formatPrecio(pedido.total)}</p>
                     <span className={`text-xs px-2 py-1 rounded-full ${
                       pedido.estado === 'entregado' ? 'bg-green-100 text-green-700' :
                       pedido.estado === 'enviado' ? 'bg-blue-100 text-blue-700' :
@@ -133,42 +133,42 @@ export default function AdminDashboard() {
           <div className="space-y-3">
             <Link href="/admin/productos" className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
               <div className="flex items-center gap-3">
-                <Package className="w-5 h-5 text-[#C85A00]" />
+                <Package className="w-5 h-5 text-[#FF6B00]" />
                 <span className="font-medium">Gestionar Productos</span>
               </div>
               <ArrowUpRight className="w-4 h-4 text-gray-400" />
             </Link>
             <Link href="/admin/categorias" className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
               <div className="flex items-center gap-3">
-                <LayoutGrid className="w-5 h-5 text-[#C85A00]" />
+                <LayoutGrid className="w-5 h-5 text-[#FF6B00]" />
                 <span className="font-medium">Gestionar Categorías</span>
               </div>
               <ArrowUpRight className="w-4 h-4 text-gray-400" />
             </Link>
             <Link href="/admin/pedidos" className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
               <div className="flex items-center gap-3">
-                <ShoppingCart className="w-5 h-5 text-[#C85A00]" />
+                <ShoppingCart className="w-5 h-5 text-[#FF6B00]" />
                 <span className="font-medium">Gestionar Pedidos</span>
               </div>
               <ArrowUpRight className="w-4 h-4 text-gray-400" />
             </Link>
             <Link href="/admin/cupones" className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
               <div className="flex items-center gap-3">
-                <DollarSign className="w-5 h-5 text-[#C85A00]" />
+                <DollarSign className="w-5 h-5 text-[#FF6B00]" />
                 <span className="font-medium">Gestionar Cupones</span>
               </div>
               <ArrowUpRight className="w-4 h-4 text-gray-400" />
             </Link>
             <Link href="/admin/clientes" className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
               <div className="flex items-center gap-3">
-                <UserCheck className="w-5 h-5 text-[#C85A00]" />
+                <UserCheck className="w-5 h-5 text-[#FF6B00]" />
                 <span className="font-medium">Gestionar Clientes</span>
               </div>
               <ArrowUpRight className="w-4 h-4 text-gray-400" />
             </Link>
             <Link href="/admin/inventario" className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
               <div className="flex items-center gap-3">
-                <FileSpreadsheet className="w-5 h-5 text-[#C85A00]" />
+                <FileSpreadsheet className="w-5 h-5 text-[#FF6B00]" />
                 <span className="font-medium">Inventario (Excel)</span>
               </div>
               <ArrowUpRight className="w-4 h-4 text-gray-400" />

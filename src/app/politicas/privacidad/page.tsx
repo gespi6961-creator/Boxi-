@@ -1,5 +1,3 @@
-'use client';
-
 import Link from 'next/link';
 
 export const metadata = {
@@ -13,14 +11,14 @@ export default function PoliticaPrivacidad() {
     <div className="bg-white rounded-lg shadow-md p-6 sm:p-8 lg:p-10">
       {/* Breadcrumb */}
       <nav className="mb-6 text-sm text-gray-500">
-        <Link href="/" className="hover:underline" style={{ color: '#C85A00' }}>
+        <Link href="/" className="hover:underline" style={{ color: '#FF6B00' }}>
           Inicio
         </Link>
         <span className="mx-2">/</span>
         <Link
           href="/politicas"
           className="hover:underline"
-          style={{ color: '#C85A00' }}
+          style={{ color: '#FF6B00' }}
         >
           Políticas
         </Link>
@@ -28,7 +26,7 @@ export default function PoliticaPrivacidad() {
         <span className="text-gray-800 font-medium">Política de Privacidad</span>
       </nav>
 
-      <h1 className="text-3xl font-bold mb-2" style={{ color: '#C85A00' }}>
+      <h1 className="text-3xl font-bold mb-2" style={{ color: '#FF6B00' }}>
         Política de Privacidad
       </h1>
       <p className="text-sm text-gray-500 mb-8">
@@ -37,13 +35,14 @@ export default function PoliticaPrivacidad() {
 
       <div className="prose prose-orange max-w-none space-y-6 text-gray-700 leading-relaxed">
         <section>
-          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#C85A00' }}>
+          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#FF6B00' }}>
             1. Información del Responsable
           </h2>
           <p>
-            <strong>BOXI TECNOLOGÍA SA DE CV</strong>, con domicilio en Swapmeet
-            Encinos, Encinos No.800, Local 327, Tecate, Baja California, C.P.
-            21480, es responsable del tratamiento de los datos personales que
+            <strong>BOXI TECNOLOGÍA SA DE CV</strong>, con domicilio en Calle
+            San Ignacio No. 105, Fraccionamiento Santa Anita, Tecate, Baja
+            California, C.P. 21453, es responsable del tratamiento de los datos
+            personales que
             recopila a través del sitio web{' '}
             <strong>https://boxi-store.vercel.app</strong> (en adelante, &quot;el
             Sitio&quot;).
@@ -59,7 +58,7 @@ export default function PoliticaPrivacidad() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#C85A00' }}>
+          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#FF6B00' }}>
             2. Datos Personales que Recopilamos
           </h2>
           <p>Para los fines establecidos en esta Política de Privacidad, recopilamos y tratamos los siguientes datos personales:</p>
@@ -95,7 +94,7 @@ export default function PoliticaPrivacidad() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#C85A00' }}>
+          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#FF6B00' }}>
             3. Finalidad del Tratamiento
           </h2>
           <p>Los datos personales recopilados serán utilizados para las siguientes finalidades:</p>
@@ -111,7 +110,7 @@ export default function PoliticaPrivacidad() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#C85A00' }}>
+          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#FF6B00' }}>
             4. Base Legal del Tratamiento
           </h2>
           <p>
@@ -125,7 +124,7 @@ export default function PoliticaPrivacidad() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#C85A00' }}>
+          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#FF6B00' }}>
             5. Consentimiento
           </h2>
           <p>
@@ -138,7 +137,7 @@ export default function PoliticaPrivacidad() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#C85A00' }}>
+          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#FF6B00' }}>
             6. Transferencias de Datos
           </h2>
           <p>
@@ -170,7 +169,7 @@ export default function PoliticaPrivacidad() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#C85A00' }}>
+          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#FF6B00' }}>
             7. Cookies y Tecnologías de Rastreo
           </h2>
           <p>
@@ -182,7 +181,7 @@ export default function PoliticaPrivacidad() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#C85A00' }}>
+          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#FF6B00' }}>
             8. Derechos ARCO
           </h2>
           <p>
@@ -214,7 +213,7 @@ export default function PoliticaPrivacidad() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#C85A00' }}>
+          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#FF6B00' }}>
             9. Seguridad de los Datos
           </h2>
           <p>
@@ -227,7 +226,7 @@ export default function PoliticaPrivacidad() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#C85A00' }}>
+          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#FF6B00' }}>
             10. Retención de Datos
           </h2>
           <p>
@@ -239,7 +238,7 @@ export default function PoliticaPrivacidad() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#C85A00' }}>
+          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#FF6B00' }}>
             11. Cambios en la Política de Privacidad
           </h2>
           <p>
@@ -251,7 +250,7 @@ export default function PoliticaPrivacidad() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#C85A00' }}>
+          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#FF6B00' }}>
             12. Contacto
           </h2>
           <p>
@@ -262,7 +261,7 @@ export default function PoliticaPrivacidad() {
             <li>
               <strong>BOXI TECNOLOGÍA SA DE CV</strong>
             </li>
-            <li>Dirección: Swapmeet Encinos, Encinos No.800, Local 327, Tecate, Baja California, C.P. 21480</li>
+            <li>Dirección: Calle San Ignacio No. 105, Fraccionamiento Santa Anita, Tecate, Baja California, C.P. 21453</li>
             <li>Teléfono: +52 665 142 3910</li>
             <li>Correo electrónico: boxitec.tech@gmail.com</li>
           </ul>
@@ -274,7 +273,7 @@ export default function PoliticaPrivacidad() {
         <Link
           href="/politicas"
           className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-white font-semibold transition-colors hover:opacity-90"
-          style={{ backgroundColor: '#C85A00' }}
+          style={{ backgroundColor: '#FF6B00' }}
         >
           ← Volver a Políticas
         </Link>

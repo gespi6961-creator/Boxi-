@@ -190,14 +190,14 @@ export default function InventarioPage() {
   if (authLoading || !user) {
     return (
       <div className="min-h-[60vh] flex items-center justify-center">
-        <div className="animate-spin w-8 h-8 border-4 border-[#C85A00] border-t-transparent rounded-full"></div>
+        <div className="animate-spin w-8 h-8 border-4 border-[#FF6B00] border-t-transparent rounded-full"></div>
       </div>
     );
   }
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
-      <Link href="/admin" className="inline-flex items-center text-[#C85A00] hover:text-[#A04800] mb-6">
+      <Link href="/admin" className="inline-flex items-center text-[#FF6B00] hover:text-[#CC5500] mb-6">
         <ArrowLeft className="w-4 h-4 mr-1" />
         Volver al Admin
       </Link>
@@ -221,14 +221,14 @@ export default function InventarioPage() {
       {/* Upload */}
       <div className="bg-white border rounded-xl p-6 mb-6">
         <div className="flex items-center gap-4">
-          <div className="w-12 h-12 bg-[#C85A00]/10 rounded-lg flex items-center justify-center">
-            <FileSpreadsheet className="w-6 h-6 text-[#C85A00]" />
+          <div className="w-12 h-12 bg-[#FF6B00]/10 rounded-lg flex items-center justify-center">
+            <FileSpreadsheet className="w-6 h-6 text-[#FF6B00]" />
           </div>
           <div className="flex-1">
             <h3 className="font-semibold text-[#1A1A1A]">Subir archivo Excel</h3>
             <p className="text-sm text-gray-500">Formatos aceptados: .xlsx, .xls, .csv</p>
           </div>
-          <label className="cursor-pointer bg-[#C85A00] text-white px-4 py-2 rounded-lg hover:bg-[#A04800] transition-colors flex items-center gap-2">
+          <label className="cursor-pointer bg-[#FF6B00] text-white px-4 py-2 rounded-lg hover:bg-[#CC5500] transition-colors flex items-center gap-2">
             <Upload className="w-4 h-4" />
             Seleccionar archivo
             <input
@@ -258,7 +258,7 @@ export default function InventarioPage() {
             <button
               onClick={procesarInventario}
               disabled={procesando}
-              className="bg-[#C85A00] text-white px-4 py-2 rounded-lg hover:bg-[#A04800] transition-colors disabled:opacity-50 flex items-center gap-2"
+              className="bg-[#FF6B00] text-white px-4 py-2 rounded-lg hover:bg-[#CC5500] transition-colors disabled:opacity-50 flex items-center gap-2"
             >
               {procesando ? (
                 <>

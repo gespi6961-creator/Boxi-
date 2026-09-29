@@ -93,10 +93,10 @@ const organizationSchema = {
   "description": "Tienda de tecnologia y gadgets innovadores",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "Swapmeet Encinos, Encinos No.800, Local 327",
+    "streetAddress": "Calle San Ignacio No. 105, Fraccionamiento Santa Anita",
     "addressLocality": "Tecate",
     "addressRegion": "Baja California",
-    "postalCode": "21480",
+    "postalCode": "21453",
     "addressCountry": "MX",
   },
   "contactPoint": {
@@ -121,16 +121,16 @@ const localBusinessSchema = {
   "priceRange": "$$",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "Swapmeet Encinos, Encinos No.800, Local 327",
+    "streetAddress": "Calle San Ignacio No. 105, Fraccionamiento Santa Anita",
     "addressLocality": "Tecate",
     "addressRegion": "Baja California",
-    "postalCode": "21480",
+    "postalCode": "21453",
     "addressCountry": "MX",
   },
   "geo": {
     "@type": "GeoCoordinates",
-    "latitude": 32.5717,
-    "longitude": -116.6319,
+    "latitude": 32.5427,
+    "longitude": -116.6519,
   },
   "openingHoursSpecification": {
     "@type": "OpeningHoursSpecification",

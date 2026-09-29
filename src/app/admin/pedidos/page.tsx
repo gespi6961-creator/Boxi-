@@ -167,7 +167,7 @@ export default function AdminPedidosPage() {
           onClick={() => setFiltroEstado('todos')}
           className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
             filtroEstado === 'todos'
-              ? 'bg-[#C85A00] text-white'
+              ? 'bg-[#FF6B00] text-white'
               : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
           }`}
         >
@@ -181,7 +181,7 @@ export default function AdminPedidosPage() {
               onClick={() => setFiltroEstado(estado.value)}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                 filtroEstado === estado.value
-                  ? 'bg-[#C85A00] text-white'
+                  ? 'bg-[#FF6B00] text-white'
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
             >
@@ -195,7 +195,7 @@ export default function AdminPedidosPage() {
       <div className="bg-white border rounded-xl overflow-hidden">
         {cargando ? (
           <div className="text-center py-12">
-            <div className="animate-spin w-8 h-8 border-4 border-[#C85A00] border-t-transparent rounded-full mx-auto"></div>
+            <div className="animate-spin w-8 h-8 border-4 border-[#FF6B00] border-t-transparent rounded-full mx-auto"></div>
           </div>
         ) : pedidosFiltrados.length === 0 ? (
           <div className="text-center py-12 text-gray-500">No hay pedidos en esta categoria</div>
@@ -227,7 +227,7 @@ export default function AdminPedidosPage() {
                     <td className="px-6 py-4 text-sm text-gray-600">
                       {formatFecha(pedido.created_at)}
                     </td>
-                    <td className="px-6 py-4 font-bold text-[#C85A00]">
+                    <td className="px-6 py-4 font-bold text-[#FF6B00]">
                       {formatPrecio(pedido.total)}
                     </td>
                     <td className="px-6 py-4">
@@ -259,7 +259,7 @@ export default function AdminPedidosPage() {
                       <button
                         onClick={() => setPedidoSeleccionado(pedido)}
                         aria-label="Ver detalles del pedido"
-                        className="p-2 text-gray-400 hover:text-[#C85A00] hover:bg-orange-50 rounded-lg"
+                        className="p-2 text-gray-400 hover:text-[#FF6B00] hover:bg-orange-50 rounded-lg"
                       >
                         <Eye className="w-4 h-4" />
                       </button>
@@ -307,7 +307,7 @@ export default function AdminPedidosPage() {
                       }}
                       className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
                         pedidoSeleccionado.estado === estado.value
-                          ? 'ring-2 ring-offset-2 ring-[#C85A00] ' + estado.color
+                          ? 'ring-2 ring-offset-2 ring-[#FF6B00] ' + estado.color
                           : estado.color + ' opacity-60 hover:opacity-100'
                       }`}
                     >
@@ -321,7 +321,7 @@ export default function AdminPedidosPage() {
                 {/* Info Cliente */}
                 <div className="bg-gray-50 rounded-xl p-4">
                   <h3 className="font-semibold text-[#1A1A1A] mb-3 flex items-center gap-2">
-                    <Phone className="w-4 h-4 text-[#C85A00]" />
+                    <Phone className="w-4 h-4 text-[#FF6B00]" />
                     Datos del Cliente
                   </h3>
                   <div className="space-y-2 text-sm">
@@ -345,7 +345,7 @@ export default function AdminPedidosPage() {
                 {/* Direccion envio */}
                 <div className="bg-gray-50 rounded-xl p-4">
                   <h3 className="font-semibold text-[#1A1A1A] mb-3 flex items-center gap-2">
-                    <MapPin className="w-4 h-4 text-[#C85A00]" />
+                    <MapPin className="w-4 h-4 text-[#FF6B00]" />
                     Direccion de Envio
                   </h3>
                   <div className="text-sm text-gray-700">
@@ -369,7 +369,7 @@ export default function AdminPedidosPage() {
               {/* Productos */}
               <div className="mt-6">
                 <h3 className="font-semibold text-[#1A1A1A] mb-3 flex items-center gap-2">
-                  <Package className="w-4 h-4 text-[#C85A00]" />
+                  <Package className="w-4 h-4 text-[#FF6B00]" />
                   Productos
                 </h3>
                 <div className="border rounded-xl overflow-hidden">
@@ -420,7 +420,7 @@ export default function AdminPedidosPage() {
                   </div>
                   <div className="flex justify-between font-bold text-lg border-t pt-2">
                     <span>Total</span>
-                    <span className="text-[#C85A00]">{formatPrecio(pedidoSeleccionado.total)}</span>
+                    <span className="text-[#FF6B00]">{formatPrecio(pedidoSeleccionado.total)}</span>
                   </div>
                 </div>
               </div>

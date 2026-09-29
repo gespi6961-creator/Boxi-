@@ -60,7 +60,7 @@ export default function CuentaPage() {
   if (authLoading || !user) {
     return (
       <div className="min-h-[60vh] flex items-center justify-center">
-        <div className="animate-spin w-8 h-8 border-4 border-[#C85A00] border-t-transparent rounded-full"></div>
+        <div className="animate-spin w-8 h-8 border-4 border-[#FF6B00] border-t-transparent rounded-full"></div>
       </div>
     );
   }
@@ -72,7 +72,7 @@ export default function CuentaPage() {
         <aside className="lg:col-span-1">
           <div className="bg-white border rounded-xl p-6 sticky top-24">
             <div className="text-center mb-6">
-              <div className="w-20 h-20 bg-[#C85A00] rounded-full flex items-center justify-center mx-auto mb-3">
+              <div className="w-20 h-20 bg-[#FF6B00] rounded-full flex items-center justify-center mx-auto mb-3">
                 <span className="text-white text-2xl font-bold">
                   {user.email?.charAt(0).toUpperCase()}
                 </span>
@@ -82,7 +82,7 @@ export default function CuentaPage() {
             </div>
 
             <nav className="space-y-2">
-              <Link href="/cuenta" className="flex items-center gap-3 px-4 py-2 bg-[#C85A00] text-white rounded-lg">
+              <Link href="/cuenta" className="flex items-center gap-3 px-4 py-2 bg-[#FF6B00] text-white rounded-lg">
                 <User className="w-5 h-5" />
                 Mi Cuenta
               </Link>
@@ -120,8 +120,8 @@ export default function CuentaPage() {
           <div className="grid sm:grid-cols-3 gap-4">
             <div className="bg-white border rounded-xl p-4">
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-[#C85A00]/10 rounded-lg flex items-center justify-center">
-                  <Package className="w-6 h-6 text-[#C85A00]" />
+                <div className="w-12 h-12 bg-[#FF6B00]/10 rounded-lg flex items-center justify-center">
+                  <Package className="w-6 h-6 text-[#FF6B00]" />
                 </div>
                 <div>
                   <p className="text-2xl font-bold text-[#1A1A1A]">{pedidos.length}</p>
@@ -157,14 +157,14 @@ export default function CuentaPage() {
           <div className="bg-white border rounded-xl p-6">
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-lg font-semibold text-[#1A1A1A]">Últimos Pedidos</h2>
-              <Link href="/cuenta/pedidos" className="text-[#C85A00] hover:text-[#A04800] text-sm">
+              <Link href="/cuenta/pedidos" className="text-[#FF6B00] hover:text-[#CC5500] text-sm">
                 Ver todos
               </Link>
             </div>
 
             {cargando ? (
               <div className="text-center py-8">
-                <div className="animate-spin w-6 h-6 border-4 border-[#C85A00] border-t-transparent rounded-full mx-auto"></div>
+                <div className="animate-spin w-6 h-6 border-4 border-[#FF6B00] border-t-transparent rounded-full mx-auto"></div>
               </div>
             ) : pedidos.length === 0 ? (
               <div className="text-center py-8 text-gray-500">
@@ -183,7 +183,7 @@ export default function CuentaPage() {
                       <p className="text-sm text-gray-500">{formatFecha(pedido.created_at)}</p>
                     </div>
                     <div className="text-right">
-                      <p className="font-bold text-[#C85A00]">{formatPrecio(pedido.total)}</p>
+                      <p className="font-bold text-[#FF6B00]">{formatPrecio(pedido.total)}</p>
                       <span className={`text-xs px-2 py-1 rounded-full ${
                         pedido.estado === 'entregado' ? 'bg-green-100 text-green-700' :
                         pedido.estado === 'enviado' ? 'bg-blue-100 text-blue-700' :

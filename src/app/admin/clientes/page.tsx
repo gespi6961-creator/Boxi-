@@ -115,7 +115,7 @@ export default function AdminClientesPage() {
       {/* Header */}
       <div className="flex items-center justify-between mb-8">
         <div className="flex items-center gap-4">
-          <Link href="/admin" className="text-gray-600 hover:text-[#C85A00]">
+          <Link href="/admin" className="text-gray-600 hover:text-[#FF6B00]">
             <ArrowLeft className="w-6 h-6" />
           </Link>
           <div>
@@ -137,7 +137,7 @@ export default function AdminClientesPage() {
                 placeholder="Nombre, email o teléfono..."
                 value={busqueda}
                 onChange={(e) => setBusqueda(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C85A00]"
+                className="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FF6B00]"
               />
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
             </div>
@@ -154,28 +154,28 @@ export default function AdminClientesPage() {
                 placeholder="Nombre *"
                 value={formulario.nombre || ''}
                 onChange={(e) => setFormulario({ ...formulario, nombre: e.target.value })}
-                className="px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#C85A00]"
+                className="px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#FF6B00]"
               />
               <input
                 type="text"
                 placeholder="Apellido"
                 value={formulario.apellido || ''}
                 onChange={(e) => setFormulario({ ...formulario, apellido: e.target.value })}
-                className="px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#C85A00]"
+                className="px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#FF6B00]"
               />
               <input
                 type="email"
                 placeholder="Email *"
                 value={formulario.email || ''}
                 onChange={(e) => setFormulario({ ...formulario, email: e.target.value })}
-                className="px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#C85A00]"
+                className="px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#FF6B00]"
               />
               <input
                 type="tel"
                 placeholder="Teléfono"
                 value={formulario.telefono || ''}
                 onChange={(e) => setFormulario({ ...formulario, telefono: e.target.value })}
-                className="px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#C85A00]"
+                className="px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#FF6B00]"
               />
               <input
                 type="text"
@@ -185,7 +185,7 @@ export default function AdminClientesPage() {
                   ...formulario,
                   direccion: { ...formulario.direccion, ciudad: e.target.value }
                 })}
-                className="px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#C85A00]"
+                className="px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#FF6B00]"
               />
               <input
                 type="text"
@@ -195,7 +195,7 @@ export default function AdminClientesPage() {
                   ...formulario,
                   direccion: { ...formulario.direccion, estado: e.target.value }
                 })}
-                className="px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#C85A00]"
+                className="px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#FF6B00]"
               />
             </div>
             <div className="mt-3 flex gap-2">
@@ -225,7 +225,7 @@ export default function AdminClientesPage() {
       {/* Lista de clientes */}
       {cargando ? (
         <div className="text-center py-12">
-          <div className="animate-spin w-8 h-8 border-4 border-[#C85A00] border-t-transparent rounded-full mx-auto"></div>
+          <div className="animate-spin w-8 h-8 border-4 border-[#FF6B00] border-t-transparent rounded-full mx-auto"></div>
           <p className="mt-4 text-gray-600">Cargando clientes...</p>
         </div>
       ) : clientesFiltrados.length === 0 ? (
@@ -275,7 +275,7 @@ export default function AdminClientesPage() {
                     <div className="flex items-center justify-end gap-2">
                       <button
                         onClick={() => iniciarEdicion(cliente)}
-                        className="text-gray-400 hover:text-[#C85A00] transition-colors"
+                        className="text-gray-400 hover:text-[#FF6B00] transition-colors"
                       >
                         <Edit className="w-5 h-5" />
                       </button>

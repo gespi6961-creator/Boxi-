@@ -117,7 +117,7 @@ export default function ProductoCard({ producto }: ProductoCardProps) {
       {/* Contenido */}
       <div className="p-4">
         <Link href={`/producto/${producto.id}`}>
-          <h3 className="font-semibold text-[#1A1A1A] hover:text-[#C85A00] transition-colors line-clamp-2">
+          <h3 className="font-semibold text-[#1A1A1A] hover:text-[#FF6B00] transition-colors line-clamp-2">
             {producto.nombre}
           </h3>
         </Link>
@@ -133,7 +133,7 @@ export default function ProductoCard({ producto }: ProductoCardProps) {
           <div>
             {tieneDescuento ? (
               <div className="flex items-center gap-2">
-                <span className="text-lg font-bold text-[#C85A00]">
+                <span className="text-lg font-bold text-[#FF6B00]">
                   {formatPrecio(producto.precio_oferta!)}
                 </span>
                 <span className="text-sm text-gray-400 line-through">
@@ -154,7 +154,7 @@ export default function ProductoCard({ producto }: ProductoCardProps) {
           className={`w-full mt-4 flex items-center justify-center gap-2 py-2 rounded-lg transition-colors font-medium ${
             agregado
               ? 'bg-green-500 text-white'
-              : 'bg-[#C85A00] text-white hover:bg-[#A04800]'
+              : 'bg-[#FF6B00] text-white hover:bg-[#CC5500]'
           }`}
         >
           <ShoppingCart className="w-4 h-4" />

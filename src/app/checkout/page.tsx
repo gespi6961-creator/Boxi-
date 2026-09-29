@@ -457,7 +457,7 @@ export default function CheckoutPage() {
           {metodoGuardado === 'tarjeta' ? 'Pago Recibido!' : 'Pedido Confirmado!'}
         </h1>
         <p className="text-gray-600 mb-2">Tu numero de pedido es:</p>
-        <p className="text-2xl font-bold text-[#C85A00] mb-6">{numeroPedido}</p>
+        <p className="text-2xl font-bold text-[#FF6B00] mb-6">{numeroPedido}</p>
 
         {metodoGuardado === 'transferencia' ? (
           <div className="bg-gray-50 rounded-xl p-6 mb-8 text-left">
@@ -476,14 +476,14 @@ export default function CheckoutPage() {
                 <span className="text-gray-600">CLABE:</span>
                 <div className="flex items-center gap-2">
                   <span className="font-medium">{datosBancarios.clabe}</span>
-                  <button onClick={copiarCLABE} className="text-[#C85A00] hover:text-[#A04800]">
+                  <button onClick={copiarCLABE} className="text-[#FF6B00] hover:text-[#CC5500]">
                     {copiado ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
                   </button>
                 </div>
               </div>
               <div className="flex justify-between">
                 <span className="text-gray-600">Referencia:</span>
-                <span className="font-medium text-[#C85A00]">{numeroPedido}</span>
+                <span className="font-medium text-[#FF6B00]">{numeroPedido}</span>
               </div>
               <div className="flex justify-between border-t pt-3">
                 <span className="text-gray-600">Total a pagar:</span>
@@ -541,7 +541,7 @@ export default function CheckoutPage() {
             <div key={index} className="flex items-center">
               <div className={`w-8 h-8 rounded-full flex items-center justify-center font-medium ${
                 pasoNumero <= paso
-                  ? 'bg-[#C85A00] text-white'
+                  ? 'bg-[#FF6B00] text-white'
                   : 'bg-gray-200 text-gray-600'
               }`}>
                 {pasoNumero < paso ? <Check className="w-4 h-4" /> : pasoNumero}
@@ -551,7 +551,7 @@ export default function CheckoutPage() {
               </span>
               {index < 2 && (
                 <div className="w-16 sm:w-32 h-1 bg-gray-200 mx-2">
-                  <div className={`h-full ${pasoNumero < paso ? 'bg-[#C85A00]' : ''}`} />
+                  <div className={`h-full ${pasoNumero < paso ? 'bg-[#FF6B00]' : ''}`} />
                 </div>
               )}
             </div>
@@ -574,7 +574,7 @@ export default function CheckoutPage() {
             {paso === 1 && (
               <div className="bg-white border rounded-xl p-6">
                 <h2 className="text-xl font-bold text-[#1A1A1A] mb-4 flex items-center gap-2">
-                  <span className="w-6 h-6 bg-[#C85A00] text-white rounded-full flex items-center justify-center text-sm">1</span>
+                  <span className="w-6 h-6 bg-[#FF6B00] text-white rounded-full flex items-center justify-center text-sm">1</span>
                   Datos Personales
                 </h2>
                 <div className="grid sm:grid-cols-2 gap-4">
@@ -589,7 +589,7 @@ export default function CheckoutPage() {
             {paso === 2 && (
               <div className="bg-white border rounded-xl p-6">
                 <h2 className="text-xl font-bold text-[#1A1A1A] mb-4 flex items-center gap-2">
-                  <span className="w-6 h-6 bg-[#C85A00] text-white rounded-full flex items-center justify-center text-sm">2</span>
+                  <span className="w-6 h-6 bg-[#FF6B00] text-white rounded-full flex items-center justify-center text-sm">2</span>
                   Direccion de Envio
                 </h2>
                 <div className="grid sm:grid-cols-2 gap-4">
@@ -610,7 +610,7 @@ export default function CheckoutPage() {
             {paso === 3 && (
               <div className="bg-white border rounded-xl p-6">
                 <h2 className="text-xl font-bold text-[#1A1A1A] mb-4 flex items-center gap-2">
-                  <span className="w-6 h-6 bg-[#C85A00] text-white rounded-full flex items-center justify-center text-sm">3</span>
+                  <span className="w-6 h-6 bg-[#FF6B00] text-white rounded-full flex items-center justify-center text-sm">3</span>
                   Metodo de Pago
                 </h2>
 
@@ -621,13 +621,13 @@ export default function CheckoutPage() {
                     onClick={() => setMetodoPago('tarjeta')}
                     className={`p-4 rounded-xl border-2 transition-all text-left ${
                       metodoPago === 'tarjeta'
-                        ? 'border-[#C85A00] bg-orange-50 shadow-md'
+                        ? 'border-[#FF6B00] bg-orange-50 shadow-md'
                         : 'border-gray-200 hover:border-gray-300'
                     }`}
                   >
                     <div className="flex items-center gap-3">
                       <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${
-                        metodoPago === 'tarjeta' ? 'bg-[#C85A00] text-white' : 'bg-gray-100 text-gray-500'
+                        metodoPago === 'tarjeta' ? 'bg-[#FF6B00] text-white' : 'bg-gray-100 text-gray-500'
                       }`}>
                         <CreditCard className="w-5 h-5" />
                       </div>
@@ -643,13 +643,13 @@ export default function CheckoutPage() {
                     onClick={() => setMetodoPago('transferencia')}
                     className={`p-4 rounded-xl border-2 transition-all text-left ${
                       metodoPago === 'transferencia'
-                        ? 'border-[#C85A00] bg-orange-50 shadow-md'
+                        ? 'border-[#FF6B00] bg-orange-50 shadow-md'
                         : 'border-gray-200 hover:border-gray-300'
                     }`}
                   >
                     <div className="flex items-center gap-3">
                       <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${
-                        metodoPago === 'transferencia' ? 'bg-[#C85A00] text-white' : 'bg-gray-100 text-gray-500'
+                        metodoPago === 'transferencia' ? 'bg-[#FF6B00] text-white' : 'bg-gray-100 text-gray-500'
                       }`}>
                         <Landmark className="w-5 h-5" />
                       </div>
@@ -804,7 +804,7 @@ export default function CheckoutPage() {
         </div>
       </form>
 
-      <Link href="/carrito" className="inline-flex items-center text-[#C85A00] hover:text-[#A04800] mt-8">
+      <Link href="/carrito" className="inline-flex items-center text-[#FF6B00] hover:text-[#CC5500] mt-8">
         <ArrowLeft className="w-4 h-4 mr-1" />
         Volver al carrito
       </Link>

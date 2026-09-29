@@ -120,7 +120,7 @@ export default function ProductoDetallePage() {
   if (cargando) {
     return (
       <div className="max-w-7xl mx-auto px-4 py-16 text-center">
-        <div className="animate-spin w-8 h-8 border-4 border-[#C85A00] border-t-transparent rounded-full mx-auto"></div>
+        <div className="animate-spin w-8 h-8 border-4 border-[#FF6B00] border-t-transparent rounded-full mx-auto"></div>
         <p className="mt-4 text-gray-600">Cargando producto...</p>
       </div>
     );
@@ -130,7 +130,7 @@ export default function ProductoDetallePage() {
     return (
       <div className="max-w-7xl mx-auto px-4 py-16 text-center">
         <h1 className="text-2xl font-bold text-[#1A1A1A] mb-4">Producto no encontrado</h1>
-        <Link href="/catalogo" className="text-[#C85A00] hover:underline">Volver al catalogo</Link>
+        <Link href="/catalogo" className="text-[#FF6B00] hover:underline">Volver al catalogo</Link>
       </div>
     );
   }
@@ -178,11 +178,11 @@ export default function ProductoDetallePage() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {/* Breadcrumb */}
       <nav className="flex items-center gap-2 text-sm text-gray-600 mb-6 flex-wrap">
-        <Link href="/" className="hover:text-[#C85A00]">Inicio</Link>
+        <Link href="/" className="hover:text-[#FF6B00]">Inicio</Link>
         <span>/</span>
-        <Link href="/catalogo" className="hover:text-[#C85A00]">Catalogo</Link>
+        <Link href="/catalogo" className="hover:text-[#FF6B00]">Catalogo</Link>
         <span>/</span>
-        <Link href={`/catalogo?categoria=${producto.categoria?.slug}`} className="hover:text-[#C85A00]">
+        <Link href={`/catalogo?categoria=${producto.categoria?.slug}`} className="hover:text-[#FF6B00]">
           {producto.categoria?.nombre}
         </Link>
         <span>/</span>
@@ -271,7 +271,7 @@ export default function ProductoDetallePage() {
                   onClick={() => setImagenActual(i)}
                   className={`aspect-square bg-gray-100 rounded-xl overflow-hidden border-2 transition-all relative ${
                     imagenActual === i
-                      ? 'border-[#C85A00] ring-2 ring-[#C85A00]/30'
+                      ? 'border-[#FF6B00] ring-2 ring-[#FF6B00]/30'
                       : 'border-transparent hover:border-gray-300 opacity-70 hover:opacity-100'
                   }`}
                 >
@@ -298,7 +298,7 @@ export default function ProductoDetallePage() {
           {/* Categoria */}
           <Link
             href={`/catalogo?categoria=${producto.categoria?.slug}`}
-            className="inline-block bg-[#C85A00]/10 text-[#C85A00] px-3 py-1 rounded-full text-sm font-medium hover:bg-[#C85A00]/20 transition-colors"
+            className="inline-block bg-[#FF6B00]/10 text-[#FF6B00] px-3 py-1 rounded-full text-sm font-medium hover:bg-[#FF6B00]/20 transition-colors"
           >
             {producto.categoria?.nombre}
           </Link>
@@ -315,7 +315,7 @@ export default function ProductoDetallePage() {
           <div className="mt-6 bg-gray-50 rounded-xl p-4">
             {tieneDescuento ? (
               <div className="flex items-center gap-3">
-                <span className="text-4xl font-bold text-[#C85A00]">
+                <span className="text-4xl font-bold text-[#FF6B00]">
                   {formatPrecio(producto.precio_oferta!)}
                 </span>
                 <span className="text-xl text-gray-400 line-through">
@@ -345,10 +345,10 @@ export default function ProductoDetallePage() {
                     disabled={variante.stock === 0}
                     className={`px-4 py-2.5 rounded-lg border-2 transition-all font-medium ${
                       varianteSeleccionada === variante.id
-                        ? 'border-[#C85A00] bg-[#C85A00] text-white shadow-md'
+                        ? 'border-[#FF6B00] bg-[#FF6B00] text-white shadow-md'
                         : variante.stock === 0
                         ? 'border-gray-200 bg-gray-50 text-gray-400 cursor-not-allowed line-through'
-                        : 'border-gray-200 hover:border-[#C85A00] hover:bg-orange-50'
+                        : 'border-gray-200 hover:border-[#FF6B00] hover:bg-orange-50'
                     }`}
                   >
                     {variante.nombre}
@@ -408,7 +408,7 @@ export default function ProductoDetallePage() {
                   ? 'bg-green-500 text-white'
                   : stock === 0
                   ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                  : 'bg-[#C85A00] text-white hover:bg-[#A04800] shadow-lg hover:shadow-xl'
+                  : 'bg-[#FF6B00] text-white hover:bg-[#CC5500] shadow-lg hover:shadow-xl'
               }`}
             >
               {agregando ? (
@@ -463,7 +463,7 @@ export default function ProductoDetallePage() {
                   alert('Link copiado al portapapeles');
                 }
               }}
-              className="flex items-center gap-2 text-gray-600 hover:text-[#C85A00] transition-colors"
+              className="flex items-center gap-2 text-gray-600 hover:text-[#FF6B00] transition-colors"
             >
               <Share2 className="w-5 h-5" />
               <span className="text-sm">Compartir</span>
@@ -491,8 +491,8 @@ export default function ProductoDetallePage() {
               </div>
             </div>
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-[#C85A00]/10 rounded-full flex items-center justify-center">
-                <Check className="w-5 h-5 text-[#C85A00]" />
+              <div className="w-10 h-10 bg-[#FF6B00]/10 rounded-full flex items-center justify-center">
+                <Check className="w-5 h-5 text-[#FF6B00]" />
               </div>
               <div>
                 <p className="font-medium text-[#1A1A1A]">Pago contra entrega</p>
@@ -512,7 +512,7 @@ export default function ProductoDetallePage() {
               onClick={() => setTabActiva(tab)}
               className={`px-6 py-3 font-medium transition-colors whitespace-nowrap ${
                 tabActiva === tab
-                  ? 'border-b-2 border-[#C85A00] text-[#C85A00]'
+                  ? 'border-b-2 border-[#FF6B00] text-[#FF6B00]'
                   : 'text-gray-500 hover:text-[#1A1A1A]'
               }`}
             >
@@ -540,8 +540,8 @@ export default function ProductoDetallePage() {
                 <div className="grid sm:grid-cols-2 gap-3">
                   {producto.caracteristicas.map((car: string, i: number) => (
                     <div key={i} className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
-                      <div className="w-6 h-6 bg-[#C85A00]/10 rounded-full flex items-center justify-center flex-shrink-0">
-                        <Check className="w-3.5 h-3.5 text-[#C85A00]" />
+                      <div className="w-6 h-6 bg-[#FF6B00]/10 rounded-full flex items-center justify-center flex-shrink-0">
+                        <Check className="w-3.5 h-3.5 text-[#FF6B00]" />
                       </div>
                       <span className="text-gray-700">{car}</span>
                     </div>
@@ -572,12 +572,12 @@ export default function ProductoDetallePage() {
                 <p className="text-sm text-blue-600 font-medium mt-1">Costo adicional</p>
               </div>
               <div className="text-center p-6 bg-gray-50 rounded-xl">
-                <div className="w-12 h-12 bg-[#C85A00]/10 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <Shield className="w-6 h-6 text-[#C85A00]" />
+                <div className="w-12 h-12 bg-[#FF6B00]/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <Shield className="w-6 h-6 text-[#FF6B00]" />
                 </div>
                 <h3 className="font-bold text-[#1A1A1A] mb-1">Garantia</h3>
                 <p className="text-sm text-gray-500">1 ano de cobertura</p>
-                <p className="text-sm text-[#C85A00] font-medium mt-1">Defectos de fabrica</p>
+                <p className="text-sm text-[#FF6B00] font-medium mt-1">Defectos de fabrica</p>
               </div>
             </div>
           )}
@@ -620,7 +620,7 @@ export default function ProductoDetallePage() {
                   )}
                 </div>
                 <h3 className="font-medium text-[#1A1A1A] text-sm line-clamp-2">{prod.nombre}</h3>
-                <p className="text-[#C85A00] font-bold mt-1">
+                <p className="text-[#FF6B00] font-bold mt-1">
                   {formatPrecio(prod.precio_oferta || prod.precio_base)}
                 </p>
               </Link>
@@ -631,7 +631,7 @@ export default function ProductoDetallePage() {
 
       {/* Volver */}
       <div className="mt-12">
-        <Link href="/catalogo" className="inline-flex items-center text-[#C85A00] hover:text-[#A04800]">
+        <Link href="/catalogo" className="inline-flex items-center text-[#FF6B00] hover:text-[#CC5500]">
           <ArrowLeft className="w-4 h-4 mr-1" />
           Volver al catalogo
         </Link>

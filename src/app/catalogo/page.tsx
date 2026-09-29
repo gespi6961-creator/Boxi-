@@ -168,7 +168,7 @@ function CatalogoContent() {
           className="w-full flex items-center justify-between font-medium text-[#1A1A1A] py-2"
         >
           <span className="flex items-center gap-2">
-            <Tag className="w-4 h-4 text-[#C85A00]" />
+            <Tag className="w-4 h-4 text-[#FF6B00]" />
             Precio
           </span>
           {seccionFiltro === 'precio' ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
@@ -180,7 +180,7 @@ function CatalogoContent() {
               placeholder="Min"
               value={precioMin}
               onChange={(e) => setPrecioMin(e.target.value)}
-              className="w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#C85A00]"
+              className="w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#FF6B00]"
               min="0"
             />
             <span className="text-gray-400">-</span>
@@ -189,7 +189,7 @@ function CatalogoContent() {
               placeholder="Max"
               value={precioMax}
               onChange={(e) => setPrecioMax(e.target.value)}
-              className="w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#C85A00]"
+              className="w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#FF6B00]"
               min="0"
             />
           </div>
@@ -202,7 +202,7 @@ function CatalogoContent() {
           className="w-full flex items-center justify-between font-medium text-[#1A1A1A] py-2"
         >
           <span className="flex items-center gap-2">
-            <Package className="w-4 h-4 text-[#C85A00]" />
+            <Package className="w-4 h-4 text-[#FF6B00]" />
             Disponibilidad
           </span>
           {seccionFiltro === 'stock' ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
@@ -213,7 +213,7 @@ function CatalogoContent() {
               type="checkbox"
               checked={soloEnStock}
               onChange={(e) => setSoloEnStock(e.target.checked)}
-              className="w-4 h-4 text-[#C85A00] border-gray-300 rounded focus:ring-[#C85A00]"
+              className="w-4 h-4 text-[#FF6B00] border-gray-300 rounded focus:ring-[#FF6B00]"
             />
             <span className="text-sm text-gray-700">Solo en stock</span>
           </label>
@@ -226,7 +226,7 @@ function CatalogoContent() {
           className="w-full flex items-center justify-between font-medium text-[#1A1A1A] py-2"
         >
           <span className="flex items-center gap-2">
-            <Percent className="w-4 h-4 text-[#C85A00]" />
+            <Percent className="w-4 h-4 text-[#FF6B00]" />
             Ofertas
           </span>
           {seccionFiltro === 'ofertas' ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
@@ -237,7 +237,7 @@ function CatalogoContent() {
               type="checkbox"
               checked={soloOfertas}
               onChange={(e) => setSoloOfertas(e.target.checked)}
-              className="w-4 h-4 text-[#C85A00] border-gray-300 rounded focus:ring-[#C85A00]"
+              className="w-4 h-4 text-[#FF6B00] border-gray-300 rounded focus:ring-[#FF6B00]"
             />
             <span className="text-sm text-gray-700">Solo productos en oferta</span>
           </label>
@@ -275,7 +275,7 @@ function CatalogoContent() {
                 value={busqueda}
                 onChange={(e) => setBusqueda(e.target.value)}
                 autoFocus
-                className="w-full pl-10 pr-4 py-2.5 border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#C85A00] focus:border-transparent bg-gray-50"
+                className="w-full pl-10 pr-4 py-2.5 border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#FF6B00] focus:border-transparent bg-gray-50"
               />
               {busqueda && (
                 <button
@@ -294,7 +294,7 @@ function CatalogoContent() {
               onClick={() => setCategoriaSeleccionada('todas')}
               className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-all ${
                 categoriaSeleccionada === 'todas'
-                  ? 'bg-[#C85A00] text-white shadow-md'
+                  ? 'bg-[#FF6B00] text-white shadow-md'
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
             >
@@ -306,7 +306,7 @@ function CatalogoContent() {
                 onClick={() => setCategoriaSeleccionada(cat.slug)}
                 className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-all flex items-center gap-1.5 ${
                   categoriaSeleccionada === cat.slug
-                    ? 'bg-[#C85A00] text-white shadow-md'
+                    ? 'bg-[#FF6B00] text-white shadow-md'
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
               >
@@ -328,7 +328,7 @@ function CatalogoContent() {
             <SlidersHorizontal className="w-4 h-4" />
             <span className="text-sm font-medium">Filtros</span>
             {filtrosActivos > 0 && (
-              <span className="bg-[#C85A00] text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">
+              <span className="bg-[#FF6B00] text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">
                 {filtrosActivos}
               </span>
             )}
@@ -337,7 +337,7 @@ function CatalogoContent() {
           <select
             value={ordenar}
             onChange={(e) => setOrdenar(e.target.value)}
-            className="px-3 py-2.5 border rounded-xl text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#C85A00] shadow-sm"
+            className="px-3 py-2.5 border rounded-xl text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#FF6B00] shadow-sm"
           >
             <option value="novedad">Mas recientes</option>
             <option value="precio_asc">Menor precio</option>
@@ -350,40 +350,40 @@ function CatalogoContent() {
         {filtrosActivos > 0 && (
           <div className="flex items-center gap-2 mb-4 overflow-x-auto pb-2">
             {precioMin && (
-              <span className="inline-flex items-center gap-1 px-3 py-1.5 bg-orange-100 text-[#C85A00] rounded-full text-xs font-medium whitespace-nowrap">
+              <span className="inline-flex items-center gap-1 px-3 py-1.5 bg-orange-100 text-[#FF6B00] rounded-full text-xs font-medium whitespace-nowrap">
                 Min: {formatPrecio(parseFloat(precioMin))}
-                <button onClick={() => setPrecioMin('')} className="hover:text-[#A04800]">
+                <button onClick={() => setPrecioMin('')} className="hover:text-[#CC5500]">
                   <X className="w-3 h-3" />
                 </button>
               </span>
             )}
             {precioMax && (
-              <span className="inline-flex items-center gap-1 px-3 py-1.5 bg-orange-100 text-[#C85A00] rounded-full text-xs font-medium whitespace-nowrap">
+              <span className="inline-flex items-center gap-1 px-3 py-1.5 bg-orange-100 text-[#FF6B00] rounded-full text-xs font-medium whitespace-nowrap">
                 Max: {formatPrecio(parseFloat(precioMax))}
-                <button onClick={() => setPrecioMax('')} className="hover:text-[#A04800]">
+                <button onClick={() => setPrecioMax('')} className="hover:text-[#CC5500]">
                   <X className="w-3 h-3" />
                 </button>
               </span>
             )}
             {soloEnStock && (
-              <span className="inline-flex items-center gap-1 px-3 py-1.5 bg-orange-100 text-[#C85A00] rounded-full text-xs font-medium whitespace-nowrap">
+              <span className="inline-flex items-center gap-1 px-3 py-1.5 bg-orange-100 text-[#FF6B00] rounded-full text-xs font-medium whitespace-nowrap">
                 En stock
-                <button onClick={() => setSoloEnStock(false)} className="hover:text-[#A04800]">
+                <button onClick={() => setSoloEnStock(false)} className="hover:text-[#CC5500]">
                   <X className="w-3 h-3" />
                 </button>
               </span>
             )}
             {soloOfertas && (
-              <span className="inline-flex items-center gap-1 px-3 py-1.5 bg-orange-100 text-[#C85A00] rounded-full text-xs font-medium whitespace-nowrap">
+              <span className="inline-flex items-center gap-1 px-3 py-1.5 bg-orange-100 text-[#FF6B00] rounded-full text-xs font-medium whitespace-nowrap">
                 Ofertas
-                <button onClick={() => setSoloOfertas(false)} className="hover:text-[#A04800]">
+                <button onClick={() => setSoloOfertas(false)} className="hover:text-[#CC5500]">
                   <X className="w-3 h-3" />
                 </button>
               </span>
             )}
             <button
               onClick={limpiarFiltros}
-              className="text-xs text-[#C85A00] hover:underline font-medium whitespace-nowrap"
+              className="text-xs text-[#FF6B00] hover:underline font-medium whitespace-nowrap"
             >
               Limpiar todo
             </button>
@@ -393,7 +393,7 @@ function CatalogoContent() {
         {/* Grid de productos */}
         {cargando ? (
           <div className="text-center py-16">
-            <div className="animate-spin w-10 h-10 border-4 border-[#C85A00] border-t-transparent rounded-full mx-auto"></div>
+            <div className="animate-spin w-10 h-10 border-4 border-[#FF6B00] border-t-transparent rounded-full mx-auto"></div>
             <p className="mt-4 text-gray-500">Cargando productos...</p>
           </div>
         ) : productos.length === 0 ? (
@@ -415,7 +415,7 @@ function CatalogoContent() {
 
         {/* Envio gratis banner */}
         {!cargando && productos.length > 0 && (
-          <div className="mt-8 bg-gradient-to-r from-[#C85A00] to-[#E07000] rounded-2xl p-6 text-white text-center">
+          <div className="mt-8 bg-gradient-to-r from-[#FF6B00] to-[#E07000] rounded-2xl p-6 text-white text-center">
             <div className="flex items-center justify-center gap-2 mb-2">
               <Zap className="w-5 h-5" />
               <span className="font-bold text-lg">Envio gratis</span>
@@ -449,7 +449,7 @@ function CatalogoContent() {
                   placeholder="Buscar..."
                   value={busqueda}
                   onChange={(e) => setBusqueda(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2.5 border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#C85A00]"
+                  className="w-full pl-10 pr-4 py-2.5 border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#FF6B00]"
                 />
               </div>
 
@@ -461,7 +461,7 @@ function CatalogoContent() {
                     onClick={() => setCategoriaSeleccionada('todas')}
                     className={`block w-full text-left px-3 py-2.5 rounded-xl transition-colors ${
                       categoriaSeleccionada === 'todas'
-                        ? 'bg-[#C85A00] text-white'
+                        ? 'bg-[#FF6B00] text-white'
                         : 'text-gray-700 hover:bg-gray-100'
                     }`}
                   >
@@ -473,7 +473,7 @@ function CatalogoContent() {
                       onClick={() => setCategoriaSeleccionada(cat.slug)}
                       className={`block w-full text-left px-3 py-2.5 rounded-xl transition-colors flex items-center gap-2 ${
                         categoriaSeleccionada === cat.slug
-                          ? 'bg-[#C85A00] text-white'
+                          ? 'bg-[#FF6B00] text-white'
                           : 'text-gray-700 hover:bg-gray-100'
                       }`}
                     >
@@ -507,7 +507,7 @@ export default function CatalogoPage() {
     <Suspense fallback={
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin w-10 h-10 border-4 border-[#C85A00] border-t-transparent rounded-full mx-auto"></div>
+          <div className="animate-spin w-10 h-10 border-4 border-[#FF6B00] border-t-transparent rounded-full mx-auto"></div>
           <p className="mt-4 text-gray-500">Cargando catalogo...</p>
         </div>
       </div>

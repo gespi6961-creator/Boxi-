@@ -79,7 +79,7 @@ export default function HomePage() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-[#C85A00] to-[#A04800] text-white">
+      <section className="relative bg-gradient-to-r from-[#FF6B00] to-[#CC5500] text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
@@ -93,7 +93,7 @@ export default function HomePage() {
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
                   href="/catalogo"
-                  className="inline-flex items-center justify-center px-8 py-3 bg-white text-[#C85A00] font-semibold rounded-lg hover:bg-orange-50 transition-colors"
+                  className="inline-flex items-center justify-center px-8 py-3 bg-white text-[#FF6B00] font-semibold rounded-lg hover:bg-orange-50 transition-colors"
                 >
                   Ver Catálogo
                   <ArrowRight className="ml-2 w-5 h-5" />
@@ -120,19 +120,19 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
             <div className="flex items-center justify-center space-x-2 text-gray-700">
-              <Truck className="w-5 h-5 text-[#C85A00]" />
+              <Truck className="w-5 h-5 text-[#FF6B00]" />
               <span className="text-sm">Envío gratis +$1,000</span>
             </div>
             <div className="flex items-center justify-center space-x-2 text-gray-700">
-              <Shield className="w-5 h-5 text-[#C85A00]" />
+              <Shield className="w-5 h-5 text-[#FF6B00]" />
               <span className="text-sm">Garantía incluida</span>
             </div>
             <div className="flex items-center justify-center space-x-2 text-gray-700">
-              <CreditCard className="w-5 h-5 text-[#C85A00]" />
+              <CreditCard className="w-5 h-5 text-[#FF6B00]" />
               <span className="text-sm">Transferencia bancaria</span>
             </div>
             <div className="flex items-center justify-center space-x-2 text-gray-700">
-              <Zap className="w-5 h-5 text-[#C85A00]" />
+              <Zap className="w-5 h-5 text-[#FF6B00]" />
               <span className="text-sm">Entrega rápida</span>
             </div>
           </div>
@@ -165,8 +165,8 @@ export default function HomePage() {
                     />
                   </div>
                 ) : (
-                  <div className="aspect-[4/3] bg-gradient-to-br from-[#C85A00]/10 to-[#C85A00]/5 flex items-center justify-center">
-                    <span className="text-[#C85A00] text-4xl font-bold opacity-30">{cat.nombre.charAt(0)}</span>
+                  <div className="aspect-[4/3] bg-gradient-to-br from-[#FF6B00]/10 to-[#FF6B00]/5 flex items-center justify-center">
+                    <span className="text-[#FF6B00] text-4xl font-bold opacity-30">{cat.nombre.charAt(0)}</span>
                   </div>
                 )}
                 <div className="p-4 text-center">
@@ -174,7 +174,7 @@ export default function HomePage() {
                   {cat.descripcion && (
                     <p className="text-sm text-gray-500 mt-1 line-clamp-2">{cat.descripcion}</p>
                   )}
-                  <p className="text-xs text-[#C85A00] font-medium mt-2">{cat.cantidad} productos</p>
+                  <p className="text-xs text-[#FF6B00] font-medium mt-2">{cat.cantidad} productos</p>
                 </div>
               </Link>
             ))}
@@ -192,7 +192,7 @@ export default function HomePage() {
             </div>
             <Link
               href="/catalogo"
-              className="text-[#C85A00] hover:text-[#A04800] font-medium flex items-center"
+              className="text-[#FF6B00] hover:text-[#CC5500] font-medium flex items-center"
             >
               Ver todo
               <ArrowRight className="ml-1 w-4 h-4" />
@@ -220,11 +220,11 @@ export default function HomePage() {
             <input
               type="email"
               placeholder="Tu correo electrónico"
-              className="flex-1 px-5 py-3.5 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#C85A00] focus:border-transparent"
+              className="flex-1 px-5 py-3.5 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#FF6B00] focus:border-transparent"
             />
             <button
               type="submit"
-              className="px-8 py-3.5 bg-[#C85A00] text-white font-semibold rounded-xl hover:bg-[#A04800] transition-all hover:scale-105 shadow-lg shadow-[#C85A00]/25"
+              className="px-8 py-3.5 bg-[#FF6B00] text-white font-semibold rounded-xl hover:bg-[#CC5500] transition-all hover:scale-105 shadow-lg shadow-[#FF6B00]/25"
             >
               Suscribirme
             </button>

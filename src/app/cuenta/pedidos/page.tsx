@@ -51,7 +51,7 @@ export default function PedidosPage() {
   if (authLoading || !user) {
     return (
       <div className="min-h-[60vh] flex items-center justify-center">
-        <div className="animate-spin w-8 h-8 border-4 border-[#C85A00] border-t-transparent rounded-full"></div>
+        <div className="animate-spin w-8 h-8 border-4 border-[#FF6B00] border-t-transparent rounded-full"></div>
       </div>
     );
   }
@@ -70,7 +70,7 @@ export default function PedidosPage() {
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
-      <Link href="/cuenta" className="inline-flex items-center text-[#C85A00] hover:text-[#A04800] mb-6">
+      <Link href="/cuenta" className="inline-flex items-center text-[#FF6B00] hover:text-[#CC5500] mb-6">
         <ArrowLeft className="w-4 h-4 mr-1" />
         Volver a Mi Cuenta
       </Link>
@@ -79,14 +79,14 @@ export default function PedidosPage() {
 
       {cargando ? (
         <div className="text-center py-12">
-          <div className="animate-spin w-8 h-8 border-4 border-[#C85A00] border-t-transparent rounded-full mx-auto"></div>
+          <div className="animate-spin w-8 h-8 border-4 border-[#FF6B00] border-t-transparent rounded-full mx-auto"></div>
         </div>
       ) : pedidos.length === 0 ? (
         <div className="bg-white border rounded-xl p-12 text-center">
           <Package className="w-16 h-16 text-gray-300 mx-auto mb-4" />
           <h2 className="text-xl font-semibold text-[#1A1A1A] mb-2">No tienes pedidos aún</h2>
           <p className="text-gray-500 mb-6">Explora nuestro catálogo y haz tu primer pedido</p>
-          <Link href="/catalogo" className="inline-block bg-[#C85A00] text-white px-6 py-3 rounded-lg font-medium hover:bg-[#A04800] transition-colors">
+          <Link href="/catalogo" className="inline-block bg-[#FF6B00] text-white px-6 py-3 rounded-lg font-medium hover:bg-[#CC5500] transition-colors">
             Ir al Catálogo
           </Link>
         </div>
@@ -103,7 +103,7 @@ export default function PedidosPage() {
                   <span className={`text-xs px-3 py-1 rounded-full font-medium ${getEstadoColor(pedido.estado)}`}>
                     {pedido.estado.charAt(0).toUpperCase() + pedido.estado.slice(1)}
                   </span>
-                  <p className="font-bold text-[#C85A00] text-lg">{formatPrecio(pedido.total)}</p>
+                  <p className="font-bold text-[#FF6B00] text-lg">{formatPrecio(pedido.total)}</p>
                 </div>
               </div>
             </div>

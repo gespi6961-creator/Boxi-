@@ -253,7 +253,7 @@ export default function BlogPostPage() {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-[#1A1A1A] mb-4">Articulo no encontrado</h1>
-          <Link href="/blog" className="text-[#C85A00] hover:underline">Volver al blog</Link>
+          <Link href="/blog" className="text-[#FF6B00] hover:underline">Volver al blog</Link>
         </div>
       </div>
     );
@@ -270,13 +270,13 @@ export default function BlogPostPage() {
       {/* Header */}
       <div className="bg-white border-b">
         <div className="max-w-4xl mx-auto px-4 py-8">
-          <Link href="/blog" className="inline-flex items-center text-[#C85A00] hover:text-[#A04800] mb-4">
+          <Link href="/blog" className="inline-flex items-center text-[#FF6B00] hover:text-[#CC5500] mb-4">
             <ArrowLeft className="w-4 h-4 mr-1" />
             Volver al blog
           </Link>
 
           <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
-            <span className="bg-[#C85A00]/10 text-[#C85A00] px-3 py-1 rounded-full font-medium">
+            <span className="bg-[#FF6B00]/10 text-[#FF6B00] px-3 py-1 rounded-full font-medium">
               {articulo.categoria}
             </span>
             <span className="flex items-center gap-1">
@@ -366,13 +366,13 @@ export default function BlogPostPage() {
                 <Link
                   key={i}
                   href={prod.link}
-                  className="flex items-center justify-between p-4 bg-gray-50 rounded-xl hover:bg-[#C85A00]/5 transition-colors border border-gray-100"
+                  className="flex items-center justify-between p-4 bg-gray-50 rounded-xl hover:bg-[#FF6B00]/5 transition-colors border border-gray-100"
                 >
                   <div>
                     <p className="font-medium text-[#1A1A1A]">{prod.nombre}</p>
-                    <p className="text-[#C85A00] font-bold">{prod.precio}</p>
+                    <p className="text-[#FF6B00] font-bold">{prod.precio}</p>
                   </div>
-                  <span className="text-[#C85A00] text-sm">Ver</span>
+                  <span className="text-[#FF6B00] text-sm">Ver</span>
                 </Link>
               ))}
             </div>
@@ -380,7 +380,7 @@ export default function BlogPostPage() {
         )}
 
         {/* CTA */}
-        <div className="mt-8 bg-gradient-to-r from-[#C85A00] to-[#A04800] rounded-2xl p-8 text-center text-white">
+        <div className="mt-8 bg-gradient-to-r from-[#FF6B00] to-[#CC5500] rounded-2xl p-8 text-center text-white">
           <h3 className="text-2xl font-bold mb-2">
             ¿Te interesa algun producto?
           </h3>
@@ -389,7 +389,7 @@ export default function BlogPostPage() {
           </p>
           <Link
             href="/catalogo"
-            className="inline-block bg-white text-[#C85A00] px-8 py-3 rounded-lg font-bold hover:bg-orange-50 transition-colors"
+            className="inline-block bg-white text-[#FF6B00] px-8 py-3 rounded-lg font-bold hover:bg-orange-50 transition-colors"
           >
             Ver Catalogo
           </Link>

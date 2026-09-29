@@ -1,5 +1,3 @@
-'use client';
-
 import Link from 'next/link';
 
 export const metadata = {
@@ -13,14 +11,14 @@ export default function PoliticaGarantia() {
     <div className="bg-white rounded-lg shadow-md p-6 sm:p-8 lg:p-10">
       {/* Breadcrumb */}
       <nav className="mb-6 text-sm text-gray-500">
-        <Link href="/" className="hover:underline" style={{ color: '#C85A00' }}>
+        <Link href="/" className="hover:underline" style={{ color: '#FF6B00' }}>
           Inicio
         </Link>
         <span className="mx-2">/</span>
         <Link
           href="/politicas"
           className="hover:underline"
-          style={{ color: '#C85A00' }}
+          style={{ color: '#FF6B00' }}
         >
           Políticas
         </Link>
@@ -28,7 +26,7 @@ export default function PoliticaGarantia() {
         <span className="text-gray-800 font-medium">Política de Garantía</span>
       </nav>
 
-      <h1 className="text-3xl font-bold mb-2" style={{ color: '#C85A00' }}>
+      <h1 className="text-3xl font-bold mb-2" style={{ color: '#FF6B00' }}>
         Política de Garantía
       </h1>
       <p className="text-sm text-gray-500 mb-8">
@@ -37,7 +35,7 @@ export default function PoliticaGarantia() {
 
       <div className="prose prose-orange max-w-none space-y-6 text-gray-700 leading-relaxed">
         <section>
-          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#C85A00' }}>
+          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#FF6B00' }}>
             1. Compromiso de Garantía
           </h2>
           <p>
@@ -49,7 +47,7 @@ export default function PoliticaGarantia() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#C85A00' }}>
+          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#FF6B00' }}>
             2. Duración de la Garantía
           </h2>
           <p>
@@ -58,8 +56,8 @@ export default function PoliticaGarantia() {
             ofrezca un plazo mayor. La fecha de compra se acreditará con la
             factura electrónica emitida por BOXI TECNOLOGÍA SA DE CV.
           </p>
-          <div className="bg-orange-50 border-l-4 p-4 rounded-r-lg mt-4" style={{ borderColor: '#C85A00' }}>
-            <p className="font-semibold" style={{ color: '#C85A00' }}>
+          <div className="bg-orange-50 border-l-4 p-4 rounded-r-lg mt-4" style={{ borderColor: '#FF6B00' }}>
+            <p className="font-semibold" style={{ color: '#FF6B00' }}>
               Importante: Conserve su factura electrónica como comprobante de
               compra. Es indispensable para hacer válida la garantía.
             </p>
@@ -67,7 +65,7 @@ export default function PoliticaGarantia() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#C85A00' }}>
+          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#FF6B00' }}>
             3. Cobertura de Garantía
           </h2>
           <p>
@@ -84,7 +82,7 @@ export default function PoliticaGarantia() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#C85A00' }}>
+          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#FF6B00' }}>
             4. Exclusiones de Garantía
           </h2>
           <p>La garantía NO cubre:</p>
@@ -103,7 +101,7 @@ export default function PoliticaGarantia() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#C85A00' }}>
+          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#FF6B00' }}>
             5. Proceso para Reclamar la Garantía
           </h2>
           <p>Para hacer válida la garantía, siga estos pasos:</p>
@@ -140,7 +138,7 @@ export default function PoliticaGarantia() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#C85A00' }}>
+          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#FF6B00' }}>
             6. Opciones de Resolución
           </h2>
           <p>Cuando la garantía sea procedente, el cliente podrá elegir entre:</p>
@@ -166,7 +164,7 @@ export default function PoliticaGarantia() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#C85A00' }}>
+          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#FF6B00' }}>
             7. Tiempos de Procesamiento
           </h2>
           <ul className="list-disc pl-6 space-y-1">
@@ -186,7 +184,7 @@ export default function PoliticaGarantia() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#C85A00' }}>
+          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#FF6B00' }}>
             8. Garantía Adicional
           </h2>
           <p>
@@ -198,7 +196,7 @@ export default function PoliticaGarantia() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#C85A00' }}>
+          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#FF6B00' }}>
             9. Documentos Requeridos
           </h2>
           <p>Para hacer válida la garantía, es necesario presentar:</p>
@@ -211,7 +209,7 @@ export default function PoliticaGarantia() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#C85A00' }}>
+          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#FF6B00' }}>
             10. Derechos del Consumidor
           </h2>
           <p>
@@ -224,7 +222,7 @@ export default function PoliticaGarantia() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#C85A00' }}>
+          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#FF6B00' }}>
             11. Contacto
           </h2>
           <p>
@@ -239,8 +237,8 @@ export default function PoliticaGarantia() {
               <strong>Teléfono:</strong> +52 665 142 3910
             </li>
             <li>
-              <strong>Dirección:</strong> Swapmeet Encinos, Encinos No.800, Local
-              327, Tecate, Baja California, C.P. 21480
+              <strong>Dirección:</strong> Calle San Ignacio No. 105,
+              Fraccionamiento Santa Anita, Tecate, Baja California, C.P. 21453
             </li>
           </ul>
         </section>
@@ -251,7 +249,7 @@ export default function PoliticaGarantia() {
         <Link
           href="/politicas"
           className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-white font-semibold transition-colors hover:opacity-90"
-          style={{ backgroundColor: '#C85A00' }}
+          style={{ backgroundColor: '#FF6B00' }}
         >
           ← Volver a Políticas
         </Link>

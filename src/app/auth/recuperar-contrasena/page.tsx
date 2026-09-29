@@ -47,7 +47,7 @@ export default function RecuperarContrasenaPage() {
         <div className="w-full max-w-md">
           <div className="text-center mb-8">
             <Link href="/" className="inline-flex items-center space-x-2">
-              <div className="w-12 h-12 bg-[#C85A00] rounded-lg flex items-center justify-center">
+              <div className="w-12 h-12 bg-[#FF6B00] rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-2xl">B</span>
               </div>
             </Link>
@@ -80,7 +80,7 @@ export default function RecuperarContrasenaPage() {
         {/* Logo */}
         <div className="text-center mb-8">
           <Link href="/" className="inline-flex items-center space-x-2">
-            <div className="w-12 h-12 bg-[#C85A00] rounded-lg flex items-center justify-center">
+            <div className="w-12 h-12 bg-[#FF6B00] rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-2xl">B</span>
             </div>
           </Link>
@@ -117,7 +117,7 @@ export default function RecuperarContrasenaPage() {
           </form>
 
           <div className="mt-6 text-center">
-            <Link href="/auth/login" className="text-[#C85A00] hover:text-[#A04800] font-medium inline-flex items-center">
+            <Link href="/auth/login" className="text-[#FF6B00] hover:text-[#CC5500] font-medium inline-flex items-center">
               <ArrowLeft className="w-4 h-4 mr-1" />
               Volver a Iniciar Sesion
             </Link>

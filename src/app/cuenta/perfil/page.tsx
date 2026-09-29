@@ -105,14 +105,14 @@ export default function PerfilPage() {
   if (authLoading || !user) {
     return (
       <div className="min-h-[60vh] flex items-center justify-center">
-        <div className="animate-spin w-8 h-8 border-4 border-[#C85A00] border-t-transparent rounded-full"></div>
+        <div className="animate-spin w-8 h-8 border-4 border-[#FF6B00] border-t-transparent rounded-full"></div>
       </div>
     );
   }
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-8">
-      <Link href="/cuenta" className="inline-flex items-center text-[#C85A00] hover:text-[#A04800] mb-6">
+      <Link href="/cuenta" className="inline-flex items-center text-[#FF6B00] hover:text-[#CC5500] mb-6">
         <ArrowLeft className="w-4 h-4 mr-1" />
         Volver a Mi Cuenta
       </Link>
@@ -129,7 +129,7 @@ export default function PerfilPage() {
 
       <form onSubmit={handleSubmit} className="bg-white border rounded-xl p-6 space-y-4">
         <div className="flex items-center gap-4 mb-6">
-          <div className="w-16 h-16 bg-[#C85A00] rounded-full flex items-center justify-center">
+          <div className="w-16 h-16 bg-[#FF6B00] rounded-full flex items-center justify-center">
             <span className="text-white text-xl font-bold">
               {user.email?.charAt(0).toUpperCase()}
             </span>

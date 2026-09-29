@@ -74,7 +74,7 @@ function generarHTMLPedido(data: PedidoEmailData): string {
               
               <!-- Header -->
               <tr>
-                <td style="background: linear-gradient(135deg, #C85A00, #A04800); padding: 30px; text-align: center;">
+                <td style="background: linear-gradient(135deg, #FF6B00, #CC5500); padding: 30px; text-align: center;">
                   <h1 style="color: white; margin: 0; font-size: 28px;">BoxiTec</h1>
                   <p style="color: rgba(255,255,255,0.9); margin: 8px 0 0 0; font-size: 14px;">Donde la tecnologia cobra vida</p>
                 </td>
@@ -98,7 +98,7 @@ function generarHTMLPedido(data: PedidoEmailData): string {
                 <td style="padding: 0 30px 30px;">
                   <div style="background-color: #f8f9fa; border-radius: 8px; padding: 20px; text-align: center;">
                     <p style="color: #666; margin: 0 0 8px 0; font-size: 14px;">Tu numero de pedido es:</p>
-                    <p style="color: #C85A00; margin: 0; font-size: 28px; font-weight: bold; letter-spacing: 2px;">${data.numeroPedido}</p>
+                    <p style="color: #FF6B00; margin: 0; font-size: 28px; font-weight: bold; letter-spacing: 2px;">${data.numeroPedido}</p>
                   </div>
                 </td>
               </tr>
@@ -137,7 +137,7 @@ function generarHTMLPedido(data: PedidoEmailData): string {
                     </tr>
                     <tr>
                       <td style="padding: 12px 0; border-top: 2px solid #1a1a1a; font-weight: bold; font-size: 18px;">Total</td>
-                      <td style="padding: 12px 0; border-top: 2px solid #1a1a1a; text-align: right; font-weight: bold; font-size: 18px; color: #C85A00;">${formatPrecio(data.total)}</td>
+                      <td style="padding: 12px 0; border-top: 2px solid #1a1a1a; text-align: right; font-weight: bold; font-size: 18px; color: #FF6B00;">${formatPrecio(data.total)}</td>
                     </tr>
                   </table>
                 </td>
@@ -196,7 +196,7 @@ function generarHTMLPedido(data: PedidoEmailData): string {
                       </a>
                     </p>
                     <p style="margin: 10px 0 0 0;">
-                      <a href="mailto:boxitec.tech@gmail.com" style="color: #C85A00; text-decoration: none;">
+                      <a href="mailto:boxitec.tech@gmail.com" style="color: #FF6B00; text-decoration: none;">
                         📧 boxitec.tech@gmail.com
                       </a>
                     </p>
@@ -208,7 +208,7 @@ function generarHTMLPedido(data: PedidoEmailData): string {
               <tr>
                 <td style="background-color: #1a1a1a; padding: 30px; text-align: center;">
                   <p style="color: #999; margin: 0 0 10px 0; font-size: 14px;">© 2026 BoxiTec - Todos los derechos reservados</p>
-                  <p style="color: #666; margin: 0; font-size: 12px;">Swapmeet Encinos, Encinos No.800, Local 327, Tecate, B.C.</p>
+                  <p style="color: #666; margin: 0; font-size: 12px;">Calle San Ignacio No. 105, Fraccionamiento Santa Anita, Tecate, B.C.</p>
                 </td>
               </tr>
 

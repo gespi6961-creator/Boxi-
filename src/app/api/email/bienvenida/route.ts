@@ -26,7 +26,7 @@ function generarHTMLBienvenida(data: WelcomeEmailData): string {
               
               <!-- Header -->
               <tr>
-                <td style="background: linear-gradient(135deg, #C85A00, #A04800); padding: 30px; text-align: center;">
+                <td style="background: linear-gradient(135deg, #FF6B00, #CC5500); padding: 30px; text-align: center;">
                   <h1 style="color: white; margin: 0; font-size: 28px;">BoxiTec</h1>
                   <p style="color: rgba(255,255,255,0.9); margin: 8px 0 0 0; font-size: 14px;">Donde la tecnologia cobra vida</p>
                 </td>
@@ -70,14 +70,14 @@ function generarHTMLBienvenida(data: WelcomeEmailData): string {
                   </div>
 
                   <!-- CTA -->
-                  <a href="https://boxi-store.vercel.app/catalogo" style="display: inline-block; background-color: #C85A00; color: white; padding: 15px 40px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 16px;">
+                  <a href="https://boxi-store.vercel.app/catalogo" style="display: inline-block; background-color: #FF6B00; color: white; padding: 15px 40px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 16px;">
                     Ver Catalogo
                   </a>
 
                   <!-- Cupon -->
-                  <div style="margin-top: 30px; padding: 20px; border: 2px dashed #C85A00; border-radius: 8px;">
+                  <div style="margin-top: 30px; padding: 20px; border: 2px dashed #FF6B00; border-radius: 8px;">
                     <p style="color: #1a1a1a; margin: 0 0 10px 0; font-size: 14px;">🎉 <strong>Descuento de bienvenida</strong></p>
-                    <p style="color: #C85A00; margin: 0; font-size: 24px; font-weight: bold;">BOXI10</p>
+                    <p style="color: #FF6B00; margin: 0; font-size: 24px; font-weight: bold;">BOXI10</p>
                     <p style="color: #666; margin: 10px 0 0 0; font-size: 12px;">10% de descuento en tu primera compra</p>
                   </div>
                 </td>
@@ -101,7 +101,7 @@ function generarHTMLBienvenida(data: WelcomeEmailData): string {
               <tr>
                 <td style="background-color: #1a1a1a; padding: 30px; text-align: center;">
                   <p style="color: #999; margin: 0 0 10px 0; font-size: 14px;">© 2026 BoxiTec - Todos los derechos reservados</p>
-                  <p style="color: #666; margin: 0; font-size: 12px;">Swapmeet Encinos, Encinos No.800, Local 327, Tecate, B.C.</p>
+                  <p style="color: #666; margin: 0; font-size: 12px;">Calle San Ignacio No. 105, Fraccionamiento Santa Anita, Tecate, B.C.</p>
                 </td>
               </tr>
 

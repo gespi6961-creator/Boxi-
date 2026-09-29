@@ -1,5 +1,3 @@
-'use client';
-
 import Link from 'next/link';
 
 export const metadata = {
@@ -13,14 +11,14 @@ export default function PoliticaDevoluciones() {
     <div className="bg-white rounded-lg shadow-md p-6 sm:p-8 lg:p-10">
       {/* Breadcrumb */}
       <nav className="mb-6 text-sm text-gray-500">
-        <Link href="/" className="hover:underline" style={{ color: '#C85A00' }}>
+        <Link href="/" className="hover:underline" style={{ color: '#FF6B00' }}>
           Inicio
         </Link>
         <span className="mx-2">/</span>
         <Link
           href="/politicas"
           className="hover:underline"
-          style={{ color: '#C85A00' }}
+          style={{ color: '#FF6B00' }}
         >
           Políticas
         </Link>
@@ -30,7 +28,7 @@ export default function PoliticaDevoluciones() {
         </span>
       </nav>
 
-      <h1 className="text-3xl font-bold mb-2" style={{ color: '#C85A00' }}>
+      <h1 className="text-3xl font-bold mb-2" style={{ color: '#FF6B00' }}>
         Política de Devoluciones
       </h1>
       <p className="text-sm text-gray-500 mb-8">
@@ -39,7 +37,7 @@ export default function PoliticaDevoluciones() {
 
       <div className="prose prose-orange max-w-none space-y-6 text-gray-700 leading-relaxed">
         <section>
-          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#C85A00' }}>
+          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#FF6B00' }}>
             1. Compromiso con la Satisfacción del Cliente
           </h2>
           <p>
@@ -52,7 +50,7 @@ export default function PoliticaDevoluciones() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#C85A00' }}>
+          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#FF6B00' }}>
             2. Plazo para Devoluciones
           </h2>
           <p>
@@ -64,7 +62,7 @@ export default function PoliticaDevoluciones() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#C85A00' }}>
+          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#FF6B00' }}>
             3. Condiciones para la Devolución
           </h2>
           <p>Para que una devolución sea aceptada, el producto deberá cumplir con las siguientes condiciones:</p>
@@ -78,7 +76,7 @@ export default function PoliticaDevoluciones() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#C85A00' }}>
+          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#FF6B00' }}>
             4. Productos No Retornables
           </h2>
           <p>
@@ -95,7 +93,7 @@ export default function PoliticaDevoluciones() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#C85A00' }}>
+          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#FF6B00' }}>
             5. Proceso de Devolución
           </h2>
           <p>Para solicitar una devolución, siga estos pasos:</p>
@@ -135,7 +133,7 @@ export default function PoliticaDevoluciones() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#C85A00' }}>
+          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#FF6B00' }}>
             6. Costos de Envío para Devoluciones
           </h2>
           <p>
@@ -151,7 +149,7 @@ export default function PoliticaDevoluciones() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#C85A00' }}>
+          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#FF6B00' }}>
             7. Opciones de Reembolso
           </h2>
           <p>Una vez aprobada la devolución, el cliente podrá elegir entre las siguientes opciones:</p>
@@ -173,7 +171,7 @@ export default function PoliticaDevoluciones() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#C85A00' }}>
+          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#FF6B00' }}>
             8. Productos Defectuosos o Dañados
           </h2>
           <p>
@@ -189,7 +187,7 @@ export default function PoliticaDevoluciones() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#C85A00' }}>
+          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#FF6B00' }}>
             9. Plazos de Procesamiento
           </h2>
           <ul className="list-disc pl-6 space-y-1">
@@ -200,7 +198,7 @@ export default function PoliticaDevoluciones() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#C85A00' }}>
+          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#FF6B00' }}>
             10. Legislación Aplicable
           </h2>
           <p>
@@ -212,7 +210,7 @@ export default function PoliticaDevoluciones() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#C85A00' }}>
+          <h2 className="text-xl font-bold mt-8 mb-3" style={{ color: '#FF6B00' }}>
             11. Contacto
           </h2>
           <p>
@@ -227,8 +225,8 @@ export default function PoliticaDevoluciones() {
               <strong>Teléfono:</strong> +52 665 142 3910
             </li>
             <li>
-              <strong>Dirección:</strong> Swapmeet Encinos, Encinos No.800, Local
-              327, Tecate, Baja California, C.P. 21480
+              <strong>Dirección:</strong> Calle San Ignacio No. 105,
+              Fraccionamiento Santa Anita, Tecate, Baja California, C.P. 21453
             </li>
           </ul>
         </section>
@@ -239,7 +237,7 @@ export default function PoliticaDevoluciones() {
         <Link
           href="/politicas"
           className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-white font-semibold transition-colors hover:opacity-90"
-          style={{ backgroundColor: '#C85A00' }}
+          style={{ backgroundColor: '#FF6B00' }}
         >
           ← Volver a Políticas
         </Link>

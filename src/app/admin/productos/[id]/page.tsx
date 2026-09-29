@@ -15,7 +15,7 @@ export default function EditarProductoPage() {
     return (
       <div className="max-w-3xl mx-auto px-4 py-8 text-center">
         <p className="text-red-600">ID de producto no válido</p>
-        <Link href="/admin/productos" className="text-[#C85A00] hover:underline mt-4 inline-block">
+        <Link href="/admin/productos" className="text-[#FF6B00] hover:underline mt-4 inline-block">
           Volver a productos
         </Link>
       </div>
@@ -187,7 +187,7 @@ function EditarForm({ id, router }: { id: string; router: any }) {
       <label className="block text-sm font-medium text-gray-700 mb-2">{label}</label>
       <div
         className={`border-2 border-dashed rounded-xl p-4 text-center transition-colors ${
-          preview ? 'border-[#C85A00] bg-orange-50' : 'border-gray-300 hover:border-[#C85A00] cursor-pointer'
+          preview ? 'border-[#FF6B00] bg-orange-50' : 'border-gray-300 hover:border-[#FF6B00] cursor-pointer'
         }`}
         onClick={() => !preview && fileRef.current?.click()}
       >
@@ -227,7 +227,7 @@ function EditarForm({ id, router }: { id: string; router: any }) {
   if (cargando) {
     return (
       <div className="max-w-3xl mx-auto px-4 py-8 text-center">
-        <div className="animate-spin w-8 h-8 border-4 border-[#C85A00] border-t-transparent rounded-full mx-auto"></div>
+        <div className="animate-spin w-8 h-8 border-4 border-[#FF6B00] border-t-transparent rounded-full mx-auto"></div>
         <p className="mt-4 text-gray-600">Cargando producto...</p>
       </div>
     );
@@ -237,7 +237,7 @@ function EditarForm({ id, router }: { id: string; router: any }) {
     return (
       <div className="max-w-3xl mx-auto px-4 py-8 text-center">
         <p className="text-red-600 mb-4">{error}</p>
-        <Link href="/admin/productos" className="text-[#C85A00] hover:underline">
+        <Link href="/admin/productos" className="text-[#FF6B00] hover:underline">
           Volver a productos
         </Link>
       </div>
@@ -246,7 +246,7 @@ function EditarForm({ id, router }: { id: string; router: any }) {
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-8">
-      <Link href="/admin/productos" className="inline-flex items-center text-[#C85A00] hover:text-[#A04800] mb-6">
+      <Link href="/admin/productos" className="inline-flex items-center text-[#FF6B00] hover:text-[#CC5500] mb-6">
         <ArrowLeft className="w-4 h-4 mr-1" />
         Volver a productos
       </Link>
@@ -275,7 +275,7 @@ function EditarForm({ id, router }: { id: string; router: any }) {
                 value={formulario.nombre}
                 onChange={handleInputChange}
                 required
-                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C85A00]"
+                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FF6B00]"
               />
             </div>
             <div>
@@ -284,7 +284,7 @@ function EditarForm({ id, router }: { id: string; router: any }) {
                 name="categoria_id"
                 value={formulario.categoria_id}
                 onChange={handleInputChange}
-                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C85A00]"
+                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FF6B00]"
               >
                 <option value="">Seleccionar</option>
                 {categorias.map((cat: any) => (
@@ -302,7 +302,7 @@ function EditarForm({ id, router }: { id: string; router: any }) {
                 value={formulario.precio_base}
                 onChange={handleInputChange}
                 required
-                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C85A00]"
+                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FF6B00]"
               />
             </div>
             <div>
@@ -314,7 +314,7 @@ function EditarForm({ id, router }: { id: string; router: any }) {
                 min="0"
                 value={formulario.precio_oferta}
                 onChange={handleInputChange}
-                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C85A00]"
+                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FF6B00]"
               />
             </div>
             <div>
@@ -324,7 +324,7 @@ function EditarForm({ id, router }: { id: string; router: any }) {
                 min="0"
                 value={stock}
                 onChange={(e) => setStock(parseInt(e.target.value) || 0)}
-                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C85A00]"
+                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FF6B00]"
               />
             </div>
             <div className="sm:col-span-2">
@@ -334,7 +334,7 @@ function EditarForm({ id, router }: { id: string; router: any }) {
                 name="descripcion_corta"
                 value={formulario.descripcion_corta}
                 onChange={handleInputChange}
-                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C85A00]"
+                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FF6B00]"
               />
             </div>
             <div className="sm:col-span-2">
@@ -344,7 +344,7 @@ function EditarForm({ id, router }: { id: string; router: any }) {
                 value={formulario.descripcion}
                 onChange={handleInputChange}
                 rows={3}
-                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C85A00]"
+                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FF6B00]"
               />
             </div>
           </div>
@@ -361,25 +361,25 @@ function EditarForm({ id, router }: { id: string; router: any }) {
 
         <div className="flex items-center gap-6">
           <label className="flex items-center gap-2">
-            <input type="checkbox" name="activo" checked={formulario.activo} onChange={handleInputChange} className="rounded border-gray-300 text-[#C85A00] focus:ring-[#C85A00]" />
+            <input type="checkbox" name="activo" checked={formulario.activo} onChange={handleInputChange} className="rounded border-gray-300 text-[#FF6B00] focus:ring-[#FF6B00]" />
             <span className="text-sm font-medium text-gray-700">Activo</span>
           </label>
           <label className="flex items-center gap-2">
-            <input type="checkbox" name="destacado" checked={formulario.destacado} onChange={handleInputChange} className="rounded border-gray-300 text-[#C85A00] focus:ring-[#C85A00]" />
+            <input type="checkbox" name="destacado" checked={formulario.destacado} onChange={handleInputChange} className="rounded border-gray-300 text-[#FF6B00] focus:ring-[#FF6B00]" />
             <span className="text-sm font-medium text-gray-700">Destacado</span>
           </label>
         </div>
 
         <div className="flex gap-4 pt-4">
           <Link href="/admin/productos" className="flex-1">
-            <button type="button" className="w-full px-4 py-2 border-2 border-[#C85A00] text-[#C85A00] rounded-lg hover:bg-[#C85A00] hover:text-white transition-colors">
+            <button type="button" className="w-full px-4 py-2 border-2 border-[#FF6B00] text-[#FF6B00] rounded-lg hover:bg-[#FF6B00] hover:text-white transition-colors">
               Cancelar
             </button>
           </Link>
           <button
             type="submit"
             disabled={guardando}
-            className="flex-1 px-4 py-2 bg-[#C85A00] text-white rounded-lg hover:bg-[#A04800] disabled:opacity-50 transition-colors inline-flex items-center justify-center gap-2"
+            className="flex-1 px-4 py-2 bg-[#FF6B00] text-white rounded-lg hover:bg-[#CC5500] disabled:opacity-50 transition-colors inline-flex items-center justify-center gap-2"
           >
             {guardando ? 'Guardando...' : 'Guardar Cambios'}
           </button>

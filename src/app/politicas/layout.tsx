@@ -25,7 +25,7 @@ export default function PoliticasLayout({
           {/* Sidebar */}
           <aside className="lg:w-64 shrink-0">
             <div className="bg-white rounded-lg shadow-md p-6 sticky top-8">
-              <h2 className="text-lg font-bold mb-4" style={{ color: '#C85A00' }}>
+              <h2 className="text-lg font-bold mb-4" style={{ color: '#FF6B00' }}>
                 Políticas
               </h2>
               <nav className="space-y-2">
@@ -40,7 +40,7 @@ export default function PoliticasLayout({
                     }`}
                     style={
                       pathname === link.href
-                        ? { backgroundColor: '#C85A00' }
+                        ? { backgroundColor: '#FF6B00' }
                         : undefined
                     }
                   >
